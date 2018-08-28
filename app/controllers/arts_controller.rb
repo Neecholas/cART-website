@@ -9,5 +9,9 @@ class ArtsController < ApplicationController
   end
 
   def destroy
+    @art = Art.find(params[:id])
+    @art.delete
+    redirect_to arts_path
   end
+
 end
