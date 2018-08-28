@@ -9,5 +9,12 @@ class CommissionsController < ApplicationController
 
 
 
+  def destroy
+    @commission = Commission.find(params[:id])
+    @commission.delete
+    redirect_to commissions_path
+  end
+
+
 
 end
