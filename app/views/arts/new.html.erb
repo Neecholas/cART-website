@@ -1,5 +1,8 @@
 
-<%= simple_form_for @art  do |f| %>
+<h1>Arts#new</h1>
+<p>Find me in app/views/arts/new.html.erb</p>
+<%= simple_form_for @art do |f| %>
+
   <%= f.input :title, required: false %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
