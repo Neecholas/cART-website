@@ -9,8 +9,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def edit
-    @test = 'weofbwefb'
+  def edit_profile
+  end
+
+  def update
+    current_user.update(user_params)
+    redirect_to root_path
   end
 
   def artist?
@@ -20,5 +24,11 @@ class UsersController < ApplicationController
         return true
       end
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :username, :bio)
   end
 end
