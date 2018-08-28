@@ -6,7 +6,7 @@ class CreateCommissions < ActiveRecord::Migration[5.2]
       t.string :photo
       t.boolean :status
       t.integer :amount
-      t.references :users, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
