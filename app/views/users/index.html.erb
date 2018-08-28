@@ -1,5 +1,7 @@
 <h2>Index of artists</h2>
 <% @users.each do |user| %>
-<h4>Artist Name: <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></h4>
-<h4><%= user.username %></h4>
+  <% if user.artist? %>
+  <h4>Artist Name: <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></h4>
+  <h4><%= user.username %></h4>
+  <% end %>
 <% end %>

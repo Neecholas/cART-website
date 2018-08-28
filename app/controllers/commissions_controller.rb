@@ -15,8 +15,6 @@ class CommissionsController < ApplicationController
   def create
     @commission = Commission.new(commission_params)
     @commission.user = current_user
-  end 
-  
     @commission.save
     redirect_to commission_path(@commission)
   end
