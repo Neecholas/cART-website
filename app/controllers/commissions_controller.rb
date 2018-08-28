@@ -32,4 +32,12 @@ class CommissionsController < ApplicationController
   def commission_params
     params.require(:commission).permit(:title, :description, :amount, :photo)
   end
+
+
+  def destroy
+    @commission = Commission.find(params[:id])
+    @commission.delete
+    redirect_to commissions_path
+  end
+
 end
