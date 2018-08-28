@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
+
   def artist?
     @user = User.find(params[:id])
     @arts.each do |art|
