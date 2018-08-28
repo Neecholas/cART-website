@@ -8,12 +8,12 @@
   <h2>Email:<%= @commission.user.email %></h2>
 </div>
 
-<div>
-<%= @commission %>
-<%= link_to "Delete", commission_path([@commission]),
-        method: :delete,
-        data: { confirm: "Delete commission?"} %>
-
-</div>
 
 <%= link_to "Edit", edit_commission_path(@commission) %>
+<% if @user.id == @commission.user.id %>
+  <%= link_to "Edit", edit_commission_path(@commission) %>
+  <%= link_to "Delete", commission_path(@commission),
+        method: :delete,
+        data: { confirm: "Delete commission?"} %>
+<% end %>
+
