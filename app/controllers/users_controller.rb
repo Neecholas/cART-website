@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @test = 'weofbwefb'
+  end
+
   def artist?
     @user = User.find(params[:id])
     @arts.each do |art|
