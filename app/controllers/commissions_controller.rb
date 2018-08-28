@@ -5,6 +5,7 @@ class CommissionsController < ApplicationController
 
   def show
     @commission = Commission.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -13,10 +14,9 @@ class CommissionsController < ApplicationController
 
   def create
     @commissions = Commission.new(commisson_params)
-    # @commission.art = Commission.find(params[:art_id])
     @commission.save
   end
-  
+
   def edit
     @commission = Commission.find(params[:id])
   end
@@ -30,8 +30,6 @@ class CommissionsController < ApplicationController
   private
 
   def commission_params
-    params.require(:commissions).permit(:title, :description, :amount, :photo)
+    params.require(:commission).permit(:title, :description, :amount, :photo)
   end
-
-
 end
