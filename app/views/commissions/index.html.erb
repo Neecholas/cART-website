@@ -1,0 +1,8 @@
+<h2>Index of Commissions</h2>
+  <% @commissions.each do |commission|  %>
+    <div>
+      <h4><%= commission.title %></h4>
+      <p><%= commission.description %></p>
+      <h4><%= commission.amount %></h4>
+    </div>
+  <% end %>
