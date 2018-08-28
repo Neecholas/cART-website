@@ -7,5 +7,6 @@
   <h2>Image:<%= @commission.photo %></h2>
   <h2>Email:<%= @commission.user.email %></h2>
 </div>
-
-<%= link_to "Edit", edit_commission_path(@commission) %>
+<% if @user.id == @commission.user.id %>
+  <%= link_to "Edit", edit_commission_path(@commission) %>
+<% end %>
