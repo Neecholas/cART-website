@@ -9,8 +9,7 @@
 User.destroy_all
 User.create!(first_name: "Christian", last_name: "Bell", username: "ctcbell1995", email: "test@test.com", password: "123123")
 User.create!(first_name: "Arber", last_name: "Zyba", username: "Arber1", email: "test2@test.com", password: "123123")
-
-
+User.create!(first_name: "Arber", last_name: "Zyba", username: "Arber", email: "test3@test.com", password: "123123")
 
 puts 'Creating 5 Commissions...'
 5.times do |i|

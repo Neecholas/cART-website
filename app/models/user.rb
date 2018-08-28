@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :commissions, dependent: :destroy
   has_many :arts, dependent: :destroy
+
+  def artist?
+    unless self.arts.empty?
+    return true
+    end
+  end
 end
