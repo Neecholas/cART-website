@@ -3,8 +3,11 @@
 <div>
   <h2>Title: <%= @commission.title %></h2>
   <h2>Description: <%= @commission.description %></h2>
-  <h2>£<%= @commission.amount %></h2>
-  <h2>Image:<%= @commission.photo %></h2>
+  <% if @commission.amount %>
+    <h2>£<%= @commission.amount %></h2>
+  <% else %>
+  <% end  %>
+  <h2>Image:<%= cl_image_tag(@commission.photo) %></h2>
   <h2>Email:<%= @commission.user.email %></h2>
 </div>
 
