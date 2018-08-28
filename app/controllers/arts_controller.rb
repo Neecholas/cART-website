@@ -1,6 +1,6 @@
 class ArtsController < ApplicationController
   def show
-    art = Art.find(params[:id])
+    @art = Art.find(params[:id])
   end
 
   def new
@@ -8,10 +8,10 @@ class ArtsController < ApplicationController
   end
 
   def create
-    @user = params[:id]
-    @art = Art.new(params)
-    @art.user_id = @user.id
+    @art = Art.new(art_params)
+    @art.user = current_user
     @art.save
+    redirect_to art_path(@art)
   end
 
   def destroy
