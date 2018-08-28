@@ -1,7 +1,7 @@
 <h2>Index of Commissions</h2>
   <% @commissions.each do |commission|  %>
     <div>
-      <h4><%= commission.title %></h4>
+      <h4><%= link_to commission.title, commission_path(commission) %></h4>
       <p><%= commission.description %></p>
       <h4><%= commission.amount %></h4>
     </div>

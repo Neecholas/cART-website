@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'arts/show'
-  get 'arts/new'
-  get 'arts/create'
-  get 'arts/destroy'
   devise_for :users
   root to: 'pages#home'
 
