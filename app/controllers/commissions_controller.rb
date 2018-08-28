@@ -3,5 +3,11 @@ class CommissionsController < ApplicationController
     @commissions = Commission.all
   end
 
+  def show
+    @commission = Commission.find(params[:id])
+  end
+
+
+
 
 end
