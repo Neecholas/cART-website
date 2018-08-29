@@ -9,7 +9,10 @@
       <div class="artist-column">
         <% @users.select{|user| user.id.even?}.each do |user| %>
           <% if user.artist? %>
-            <%= cl_image_tag user.arts.first.photo, class: "artist-card" %>
+            <div class="artist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path user.arts.first.photo %>');">>
+              <%= link_to "", root_path %>
+              <h4><%= "#{user.first_name} #{user.last_name}" %></h4>
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -18,7 +21,7 @@
        <div class="artist-column">
          <% @users.select{|user| user.id.odd?}.each do |user| %>
           <% if user.artist? %>
-            <%= cl_image_tag user.arts.first.photo, class: "artist-card" %>
+            <%= cl_image_tag user.arts.first.photo, class: "artist-image" %>
           <% end %>
         <% end %>
       </div>
