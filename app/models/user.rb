@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :commissions, dependent: :destroy
   has_many :arts, dependent: :destroy
+  has_many :requests, dependent: :destroy
+
 
   def artist?
     unless self.arts.empty?
