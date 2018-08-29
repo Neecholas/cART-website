@@ -13,12 +13,9 @@ class RequestsController < ApplicationController
   def create
     @commission = Commission.find(params[:commission_id])
     @request = Request.new(request_params)
-    @request.commission = Commission.find(params[:commission_id])
+    @request.commission = @commission
     @request.save
     redirect_to commission_path(@commission)
-  end
-
-  def delete
   end
 
   private
