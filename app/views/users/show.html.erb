@@ -3,5 +3,7 @@
 <h4><%= @user.first_name %></h4>
 <h4><%= @user.last_name %></h4>
 <h4><%= @user.bio %></h4>
-
-
+<% if current_user.id = params[:id] %>
+  <%= link_to "Put out a commission", new_commission_path %>
+  <%= link_to "Add art", new_art_path %>
+<% end %>
