@@ -31,3 +31,21 @@ p {
   font-size: 14px;
 }
 
+a {
+  color: $dark-gray;
+}
+
+a:hover {
+  color: $dark-gray;
+  text-decoration: underline;
+  text-decoration-color: $turquiose;
+  text-decoration-style: solid;
+}
+
+.navbar-underline {
+  color: $dark-gray;
+  text-decoration: underline;
+  text-decoration-color: $turquiose;
+  text-decoration-style: solid;
+}
+
