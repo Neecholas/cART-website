@@ -1,8 +1,15 @@
-<h1>Comissions#new</h1>
+<h1>Your Commission:</h1>
 <%= simple_form_for @commission do |f| %>
-  <%= f.input :title, required: false %>
+  <%= f.input :title, required: false,
+  class: "com-title",
+  placeholder: "A title of a picture here" %>
+  <%= f.input :description,
+  class: "com-desription",
+  placeholder: "A description of the picture you want commissioned" %>
   <%= f.input :photo %>
-  <%= f.input :amount %>
+  <%= f.input :amount,
+  class: "com-amount",
+  placeholder: "A price range for your commision" %>
   <%= f.input :photo_cache, as: :hidden %>
 
 
