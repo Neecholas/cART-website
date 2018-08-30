@@ -1,0 +1,21 @@
+.art-container {
+  display: flex;
+  align-items: center;
+  padding-left: 15%;
+  padding-right: 15%;
+  background-color: transparent;
+}
+
+.art-p-s {
+  display:flex;
+  align-items: center;
+  .btn {
+    margin-left: 255%;
+    background-color: $turquiose;
+    color: white;
+  }
+}
+
+.art_photo {
+  border-color: transparent;
+}
