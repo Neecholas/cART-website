@@ -1,0 +1,65 @@
+
+
+.com-container {
+  display: flex;
+  align-items: center;
+  padding-left: 15%;
+  padding-right: 15%;
+  background-color: transparent;
+}
+
+.container {
+  height:calc(100vh - 70px);
+
+}
+
+.p-s {
+  display:flex;
+  align-items: center;
+  .btn {
+    margin-left: 255%;
+    background-color: $turquiose;
+
+  }
+}
+
+
+.container h3 {
+  border-bottom: 3px solid $turquiose;
+  padding-bottom:10px;
+
+}
+
+.form-group input {
+  font-size: 16px;
+  background-color: transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  &:focus{
+    outline: none;
+    outline-style:none;
+    box-shadow:none;
+    border-color:transparent;
+  }
+}
+
+.form-control-label {
+  color: $dark-gray;
+  border-bottom: 2px solid $turquiose;
+  padding-bottom:10px;
+  padding-top: 10px;
+}
+
+.file {
+  color: $dark-gray;
+  border-bottom: 2px solid $turquiose;
+  padding-bottom:10px;
+}
+
+.commission_photo {
+  border-color: transparent;
+}
+
