@@ -24,6 +24,8 @@
  .artist-card:hover  {
 
     .artist-card-background {
+      transition-timing-function: ease-in;
+      transition: 0.5s;
       opacity: 0.5;
       cursor: pointer;
     }
@@ -50,8 +52,9 @@
 }
 
 .artist-container {
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-top: 16px;
+  margin-right: 16px;
+  margin-left: 16px;
   width: auto;
   margin-bottom: 16px;
 }
