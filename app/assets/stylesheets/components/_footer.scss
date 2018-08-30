@@ -7,9 +7,9 @@
   width: 100%;
   margin-top: 20px;
   color: rgba(0,0,0,0.3);
-  position: fixed;
   bottom: 0px;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .footer-links {
   display: flex;
@@ -30,5 +30,4 @@
 }
 
 .footer-copyright {
-  padding-bottom: 10px;
-}
+  }
