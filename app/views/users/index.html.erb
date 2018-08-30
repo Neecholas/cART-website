@@ -1,7 +1,19 @@
 <div class="page-container">
-  <div class="artist-search">
-    <h4>Search Bar</h4>
+
+<div class="artist-search-container">
+  <div class="artist-search-icon">
+    <h5 class="fas fa-search"></h5>
   </div>
+  <div class="artist-border">
+    <%= form_tag users_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control artist-search",
+      placeholder: "Find an artist"
+  %>
+  <% end %>
+  </div>
+</div>
 
   <div class="container artist-container">
     <div class="row">
@@ -11,7 +23,7 @@
             <% if user.artist? %>
               <div class="artist-card" style="background-image:
               url('<%= cl_image_path user.arts.first.photo, class: "artist-image"; %>');">
-                <%= link_to root_path do  %>
+                <%= link_to user_path(user) do  %>
                   <div class="artist-card-background"></div>
                   <h4 class="artist-title"><%= "#{user.first_name} #{user.last_name}" %></h4>
                 <% end %>
@@ -26,7 +38,7 @@
             <% if user.artist? %>
               <div class="artist-card artist-card-height" style="background-image:
               url('<%= cl_image_path user.arts.first.photo, class: "artist-image"; %>');">
-                <%= link_to root_path do  %>
+                <%= link_to user_path(user) do  %>
                   <div class="artist-card-background"></div>
                   <h4 class="artist-title"><%= "#{user.first_name} #{user.last_name}" %></h4>
                 <% end %>

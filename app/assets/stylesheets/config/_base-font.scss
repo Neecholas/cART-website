@@ -8,8 +8,6 @@ h3 {
   color: $dark-gray;
   font-weight: bold;
   font-size: 36px;
-
-
 }
 
 h4 {
@@ -47,5 +45,9 @@ a:hover {
   text-decoration: underline;
   text-decoration-color: $turquiose;
   text-decoration-style: solid;
+}
+
+body {
+  background-color: white;
 }
 

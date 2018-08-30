@@ -13,8 +13,8 @@ Art.destroy_all
 
 images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg" ]
 
-puts 'Creating 5 Users...'
-5.times do
+puts 'Creating 10 Users...'
+10.times do
   User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -24,8 +24,8 @@ puts 'Creating 5 Users...'
   )
 end
 
-puts 'Creating 5 Arts...'
-5.times do
+puts 'Creating 10 Arts...'
+10.times do
   Art.create!(
     title: Faker::Book.title,
     photo: open(images.sample),
@@ -33,34 +33,26 @@ puts 'Creating 5 Arts...'
     )
 end
 
-puts 'Creating 5 Commissions...'
-5.times do
+puts 'Creating 10 Commissions...'
+10.times do
   Commission.create!(
     title: Faker::Book.title,
     description: Faker::BojackHorseman.quote,
     amount: rand(1..15) * 10,
-    user_id: User.first.id
+    photo: open(images.sample),
+    user_id: User.all.sample.id
   )
 end
 
-puts "Creating 5 Requests..."
-  5.times do
+puts "Creating 10 Requests..."
+  10.times do
     Request.create!(
       description: "I will do this for you!",
       amount: rand(1..15) * 10,
-      commission_id: Commission.first.id,
-      user_id: User.last.id,
+      commission_id: Commission.all.sample.id,
+      user_id: User.all.sample.id,
       price_cents: rand(1..5) * 1000
     )
   end
 
-puts 'Creating 5 Commissions...'
-5.times do
-  Commission.create!(
-    title: Faker::Book.title,
-    description: Faker::BojackHorseman.quote,
-    amount: rand(1..15) * 10,
-    user_id: User.last.id
-  )
-end
 puts 'Finished!'
