@@ -1,5 +1,4 @@
 <h2>Commission show page</h2>
-
 <div>
   <h2>Title: <%= @commission.title %></h2>
   <h2>Description: <%= @commission.description %></h2>
@@ -10,14 +9,32 @@
   <h2>Image:<%= cl_image_tag(@commission.photo) %></h2>
   <h2>Email:<%= @commission.user.email %></h2>
 </div>
-
-<% if @user.id == @commission.user.id %>
-  <%= link_to "Edit", edit_commission_path(@commission) %>
-  <%= link_to "Delete", commission_path(@commission),
-        method: :delete,
-        data: { confirm: "Delete commission?"} %>
-  <%= link_to "Commission Requests", commission_requests_path(@commission) %>
+<% unless @commission.status %>
+  <% if @user.id == @commission.user.id %>
+    <%= link_to "Edit", edit_commission_path(@commission) %>
+    <%= link_to "Delete", commission_path(@commission),
+          method: :delete,
+          data: { confirm: "Delete commission?"} %>
+    <%= link_to "Commission Requests", commission_requests_path(@commission) %>
+    <% if @commission.requests %>
+      <% @commission.requests.each do |request| %>
+        <%= request.description %>
+        <p> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></p>
+        <%= link_to "Accept", request_path(request) %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to "Request Commission", new_commission_request_path(@commission) %>
+  <% end %>
 <% else %>
-  <%= link_to "Request Commission", new_commission_request_path(@commission) %>
+  <h2>this commission has been accepted!</h2>
+  <% if @user.id == @commission.user.id %>
+    <%= link_to "Delete", commission_path(@commission),
+          method: :delete,
+          data: { confirm: "Delete commission?"} %>
+  <% end %>
 <% end %>
+
+
+
 

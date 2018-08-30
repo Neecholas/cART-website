@@ -19,6 +19,15 @@ puts 'Creating 5 Commissions...'
     amount: rand(1..15) * 10,
     user_id: User.first.id
   )
+  5.times do
+    request = Request.create!(
+      description: "I will do this for you!",
+      amount: rand(1..15) * 10,
+      commission_id: product.id,
+      user_id: User.last.id,
+      price_cents: rand(1..5) * 1000
+    )
+  end
 end
 
 puts 'Creating 5 Commissions...'
