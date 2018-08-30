@@ -1,7 +1,27 @@
-<h2>Index of artists</h2>
-<% @users.each do |user| %>
-  <% if user.artist? %>
-  <h4>Artist Name: <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></h4>
-  <h4><%= user.username %></h4>
-  <% end %>
-<% end %>
+
+<div class="artist-search">
+  <h4>Search Bar</h4>
+</div>
+
+<div class="container artist-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7">
+      <div class="artist-column">
+        <% @users.select{|user| user.id.even?}.each do |user| %>
+          <% if user.artist? %>
+            <%= cl_image_tag user.arts.first.photo, class: "artist-card" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+       <div class="artist-column">
+         <% @users.select{|user| user.id.odd?}.each do |user| %>
+          <% if user.artist? %>
+            <%= cl_image_tag user.arts.first.photo, class: "artist-card" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
