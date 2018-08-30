@@ -1,4 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Put out a commission", new_commission_path %>
-<%= link_to "View Commissions", commissions_path %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 50%), url(<%= image_path 'video.gif'%>); background-size: cover;">
+  <div class="banner-content">
+    <h1>Art.
+        Commissions.
+        cART.
+      </h1>
+
+    <button type="submit" class="banner-btn" id="item-search"><%= link_to "Commissions Art", users_path %></button>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_29_100434) do
+ActiveRecord::Schema.define(version: 2018_08_30_092831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2018_08_29_100434) do
     t.index ["user_id"], name: "index_commissions_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "request_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "GBP", null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.bigint "commission_id"
     t.bigint "user_id"
@@ -44,6 +56,8 @@ ActiveRecord::Schema.define(version: 2018_08_29_100434) do
     t.string "description"
     t.integer "amount"
     t.boolean "status"
+    t.integer "price_cents", default: 0, null: false
+    t.string "sku"
     t.index ["commission_id"], name: "index_requests_on_commission_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
@@ -66,6 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_29_100434) do
 
   add_foreign_key "arts", "users"
   add_foreign_key "commissions", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "requests", "commissions"
   add_foreign_key "requests", "users"
 end
