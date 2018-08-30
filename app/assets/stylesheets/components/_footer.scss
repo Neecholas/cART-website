@@ -5,10 +5,11 @@
   justify-content: space-between;
   height: 68px;
   width: 100%;
-  padding: 0px 50px;
+  margin-top: 20px;
   color: rgba(0,0,0,0.3);
-  position: fixed;
-  bottom: 0;
+  bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .footer-links {
   display: flex;
@@ -29,5 +30,4 @@
 }
 
 .footer-copyright {
-  padding-bottom: 10px;
-}
+  }
