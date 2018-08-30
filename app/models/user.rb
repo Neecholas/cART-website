@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :commissions, dependent: :destroy
   has_many :arts, dependent: :destroy
   has_many :requests, dependent: :destroy
+  has_many :orders
 
 
   def artist?
