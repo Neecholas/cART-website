@@ -1,14 +1,38 @@
-<h2>Commission show page</h2>
-<div>
-  <h2>Title: <%= @commission.title %></h2>
-  <h2>Description: <%= @commission.description %></h2>
-  <% if @commission.amount %>
-    <h2>£<%= @commission.amount %></h2>
-  <% else %>
-  <% end  %>
-  <h2>Image:<%= cl_image_tag(@commission.photo) %></h2>
-  <h2>Email:<%= @commission.user.email %></h2>
+<div class="banner banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @commission.photo %>');">
 </div>
+
+<div class="commission-section">
+  <div class="container">
+    <div class="commission_box">
+      <div class="commission_show_left">
+        <h2> <%= @commission.title %></h2>
+        <% if @commission.amount %>
+          <h4>£<%= @commission.amount %></h4>
+        <% end  %>
+      </div>
+
+      <div class="commission_show_right">
+        <div class="commission_show-description">
+          <h2>Description <%# @commission.description %></h2>
+          <%= link_to "Request Commission", new_commission_request_path(@commission), class: "show-btn-commission" %>
+        </div>
+        <h4>The Aphrodite of Knidos (or Cnidus) was an Ancient Greek sculpture of the goddess Aphrodite created by
+          Praxiteles of Athens around the 4th century BCE. It is one of the first life-sized representations of the nude
+          female form in Greek history, displaying an alternative idea to male heroic nudity. Praxiteles' Aphrodite is
+          shown nude, reaching for a bath towel while covering her pubis, which, in turn leaves her breasts exposed.
+          Up until this point, Greek sculpture had been dominated by male nude figures. The original Greek sculpture
+          is no longer in existence; however, many Roman copies survive of this influential work of art. Variants of
+          the Venus Pudica (suggesting an action to cover the breasts) are the Venus de' Medici and the Capitoline
+          Venus.
+        </h4>
+      </div>
+    </div>
+    <!-- <h2>Email:<%#= @commission.user.email %></h2> -->
+  </div>
+</div>
+
+
+
 <% unless @commission.status %>
   <% if @user.id == @commission.user.id %>
     <%= link_to "Edit", edit_commission_path(@commission) %>
@@ -24,7 +48,7 @@
       <% end %>
     <% end %>
   <% else %>
-    <%= link_to "Request Commission", new_commission_request_path(@commission) %>
+    <%# link_to "Request Commission", new_commission_request_path(@commission) %>
   <% end %>
 <% else %>
   <h2>this commission has been accepted!</h2>
