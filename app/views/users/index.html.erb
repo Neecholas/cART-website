@@ -1,7 +1,40 @@
-<h2>Index of artists</h2>
-<% @users.each do |user| %>
-  <% if user.artist? %>
-  <h4>Artist Name: <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %></h4>
-  <h4><%= user.username %></h4>
-  <% end %>
-<% end %>
+<div class="page-container">
+  <div class="artist-search">
+    <h4>Search Bar</h4>
+  </div>
+
+  <div class="container artist-container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-7">
+        <div class="artist-column">
+          <% @users.select{ |user| user.id.even?}.each do |user| %>
+            <% if user.artist? %>
+              <div class="artist-card" style="background-image:
+              url('<%= cl_image_path user.arts.first.photo, class: "artist-image"; %>');">
+                <%= link_to root_path do  %>
+                  <div class="artist-card-background"></div>
+                  <h4 class="artist-title"><%= "#{user.first_name} #{user.last_name}" %></h4>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-5">
+         <div class="artist-column">
+           <% @users.select{ |user| user.id.odd?}.each do |user| %>
+            <% if user.artist? %>
+              <div class="artist-card artist-card-height" style="background-image:
+              url('<%= cl_image_path user.arts.first.photo, class: "artist-image"; %>');">
+                <%= link_to root_path do  %>
+                  <div class="artist-card-background"></div>
+                  <h4 class="artist-title"><%= "#{user.first_name} #{user.last_name}" %></h4>
+                <% end %>
+              </div>
+            <% end %>
+           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

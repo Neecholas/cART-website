@@ -35,6 +35,9 @@ class CommissionsController < ApplicationController
     redirect_to commissions_path
   end
 
+  def accept
+  end
+
   private
 
   def commission_params

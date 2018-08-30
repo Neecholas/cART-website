@@ -1,0 +1,68 @@
+.artist-search {
+  padding: 24px;
+}
+
+.artist-card {
+  height: 280px;
+  background-size: cover;
+  position: relative;
+  margin: 5px;
+  h4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: transparent;
+
+  }
+}
+
+.artist-card-height {
+  height: 220px;
+}
+
+ .artist-card:hover  {
+
+    .artist-card-background {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    // background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    // background-size: cover;
+    h4 {
+      color: $light-gray;
+    }
+  }
+
+  .artist-title {
+    z-index: 5;
+  }
+
+.artist-image {
+  width: 100%;
+  padding: 6px;
+
+}
+
+.artist-column {
+  margin: -15px;
+}
+
+.artist-container {
+  margin-right: 15px;
+  margin-left: 15px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.artist-card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
