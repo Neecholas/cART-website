@@ -14,42 +14,37 @@
       <div class="commission_show_right">
         <div class="commission_show-description">
           <h2>Description <%# @commission.description %></h2>
-          <%= link_to "Request Commission", new_commission_request_path(@commission), class: "show-btn-commission" %>
+          <% if current_user.id == @commission.user.id %>
+              <%= link_to "Edit", edit_commission_path(@commission), class: 'show-btn-commission' %>
+              <%= link_to "Delete", commission_path(@commission), method: :delete, data: { confirm: "Delete commission?"} %>
+          <% else %>
+            <%= link_to "Request Commission", new_commission_request_path(@commission), class: "show-btn-commission" %>
+          <% end %>
         </div>
         <h4><%= @commission.description %></h4>
       </div>
     </div>
     <!-- <h2>Email:<%#= @commission.user.email %></h2> -->
+    <% if current_user.id == @commission.user.id %>
+      <% if @commission.status.nil? %>
+        <h3>Requests</h3>
+        <% @commission.requests.each do |request| %>
+          <div class="request-card">
+            <p><%= request.description %></p>
+            <div>
+              <p> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></p>
+              <%= link_to "Accept", request_path(request), class: 'show-btn-commission' %>
+            </div>
+          </div>
+        <% end %>
+      <% elsif @commission.status == 'accepted' %>
+        <h2>This commission has been accepted!</h2>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
 
-
-<% unless @commission.status %>
-  <% if @user.id == @commission.user.id %>
-    <%= link_to "Edit", edit_commission_path(@commission) %>
-    <%= link_to "Delete", commission_path(@commission),
-          method: :delete,
-          data: { confirm: "Delete commission?"} %>
-    <%= link_to "Commission Requests", commission_requests_path(@commission) %>
-    <% if @commission.requests %>
-      <% @commission.requests.each do |request| %>
-        <%= request.description %>
-        <p> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></p>
-        <%= link_to "Accept", request_path(request) %>
-      <% end %>
-    <% end %>
-  <% else %>
-    <%# link_to "Request Commission", new_commission_request_path(@commission) %>
-  <% end %>
-<% else %>
-  <h2>this commission has been accepted!</h2>
-  <% if @user.id == @commission.user.id %>
-    <%= link_to "Delete", commission_path(@commission),
-          method: :delete,
-          data: { confirm: "Delete commission?"} %>
-  <% end %>
-<% end %>
 
 
 

@@ -5,7 +5,6 @@ class CommissionsController < ApplicationController
 
   def show
     @commission = Commission.find(params[:id])
-    @user = current_user
   end
 
   def new
