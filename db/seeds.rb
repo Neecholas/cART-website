@@ -27,7 +27,7 @@ end
 puts 'Creating 10 Arts...'
 10.times do
   Art.create!(
-    title: Faker::Book.title,
+    title: Faker::BojackHorseman.character,
     photo: open(images.sample),
     user_id: User.all.sample.id
     )
