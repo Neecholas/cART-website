@@ -8,3 +8,22 @@
   align-items: center;
   justify-content: center;
 }
+
+.luser h2 {
+  color: white;
+}
+
+.prof-mini-contain {
+  display: flex;
+  justify-content: center;
+    width: 50%;
+    margin: 50px auto;
+    img {
+      margin-right: 20px;
+    }
+}
+
+.prof-desc h5 {
+  font-size: 16px;
+}
+
