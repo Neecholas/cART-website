@@ -1,4 +1,4 @@
-<div class="banner banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @commission.photo %>');">
+<div class="banner banner-show" >
 </div>
 
 <div class="commission-section">
@@ -14,6 +14,7 @@
       <div class="commission_show_right">
         <div class="commission_show-description">
           <h2>Description <%# @commission.description %></h2>
+
           <% if current_user.id == @commission.user.id %>
               <%= link_to "Edit", edit_commission_path(@commission), class: 'show-btn-commission' %>
               <%= link_to "Delete", commission_path(@commission), method: :delete, data: { confirm: "Delete commission?"} %>

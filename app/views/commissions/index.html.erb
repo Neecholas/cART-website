@@ -22,7 +22,7 @@
       </div>
       <div class="col-xs-12 col-sm-5">
          <div class="artist-column">
-           <% @commissions.select{|commission| commission.id.even?}.each do |commission| %>
+           <% @commissions.select{|commission| commission.id.odd?}.each do |commission| %>
               <div class="com-index-card com-card-height">
                 <%= link_to commission_path(commission) do  %>
                   <div class="com-link"></div>

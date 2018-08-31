@@ -1,6 +1,6 @@
 <h1>Requests#new</h1>
 <%= simple_form_for [@commission, @request] do |f| %>
   <%= f.input :description, required: false %>
-  <%= f.input :amount %>
+  <%= f.input :price_cents %>
   <%= f.button :submit %>
 <% end %>

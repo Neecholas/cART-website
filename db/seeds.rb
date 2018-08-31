@@ -10,6 +10,24 @@ User.destroy_all
 Commission.destroy_all
 Request.destroy_all
 Art.destroy_all
+Order.destroy_all
+
+User.create(
+    first_name: "Nick",
+    last_name: "Johnson",
+    username: "NJ the juiceman",
+    email: "nick@bogdanoff.com",
+    password: "123123"
+    )
+
+User.create(
+    first_name: "Christian",
+    last_name: "Bell",
+    username: "ChristianBell",
+    email: "christianBell@bell.com",
+    password: "123123"
+    )
+
 
 images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg" ]
 
@@ -48,9 +66,12 @@ puts "Creating 10 Requests..."
   10.times do
     Request.create!(
       description: "I will do this for you!",
+
+
       amount: rand(1..15) * 10,
       commission_id: Commission.all.sample.id,
       user_id: User.all.sample.id,
+
       price_cents: rand(1..5) * 1000
     )
   end
