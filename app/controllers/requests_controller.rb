@@ -41,7 +41,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:description, :amount, :status)
+    params.require(:request).permit(:description, :price_cents, :status)
   end
 
 end
