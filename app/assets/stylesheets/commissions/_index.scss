@@ -1,13 +1,13 @@
 @import "new";
 @import "show";
 
-.com-card {
+.com-index-card {
   margin: 16px;
   padding: 16px;
   background: $light-gray;
 }
 
- .com-card:hover {
+ .com-index-card:hover {
   transition-timing-function: ease-in;
   transition: 0.5s;
   background: $dark-gray;
