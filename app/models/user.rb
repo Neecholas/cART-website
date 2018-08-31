@@ -14,4 +14,22 @@ class User < ApplicationRecord
     return true
     end
   end
+
+  def commissions_requests
+    commissions.map { |commission| commission.requests }.flatten
+  end
+
+  def orders_as_commissioner
+    return self.orders
+  end
+
+  def orders_as_commissionee
+    orders = []
+    requests.each do |request|
+      unless request.order.nil?
+        orders << request.order
+      end
+    end
+    orders
+  end
 end

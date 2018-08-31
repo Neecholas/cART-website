@@ -10,4 +10,16 @@ class OrdersController < ApplicationController
   def show
     @order = current_user.orders.where(state: 'paid').find(params[:id])
   end
+
+  def update
+    order = Order.find(params[:id])
+    order.update(orders_params)
+    redirect_to user_path(current_user)
+  end
+
+  private
+
+  def orders_params
+    params.require(:order).permit(:photo)
+  end
 end
