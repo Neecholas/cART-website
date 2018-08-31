@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'accept'
   end
   resources :payments, only: [ :show, :new, :create ]
-  resources :orders, only: [:show, :create] do
+  resources :orders, only: [:show, :create, :update] do
     resources :payments, only: [:new, :create]
   end
 end
