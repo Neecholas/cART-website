@@ -1,1 +1,34 @@
 @import "new";
+@import "show";
+
+.com-index-card {
+  margin: 16px;
+  padding: 16px;
+  background: $light-gray;
+}
+
+ .com-index-card:hover {
+  transition-timing-function: ease-in;
+  transition: 0.5s;
+  background: $dark-gray;
+  h3 {
+    color: $light-gray;
+  }
+  h5 {
+    color: $light-gray;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.com-content {
+  h5 {
+    font-family: 'Merriweather';
+    font-weight: lighter;
+    color: $gray;
+    padding-bottom: 24px;
+    padding-top: 8px;
+  }
+}
+

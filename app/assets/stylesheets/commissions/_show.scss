@@ -1,0 +1,57 @@
+.banner-show {
+  height: 50vh;
+}
+
+
+.commission_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commission_show_left {
+  flex: 0 0 40%;
+  h2 {
+    margin-top: 0;
+    color: black;
+    margin-bottom: 40px;
+  }
+}
+
+.commission_show_right {
+  flex: 1;
+
+  h4 {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+.commission-section {
+  padding: 50px 0;
+  background-color: white;
+}
+
+.commission_show-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    border-bottom: 3px solid $turquiose;
+    color: black;
+    width: 40%;
+    padding: 2px 0;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+}
+
+
+.show-btn-commission {
+  background-color: $turquiose;
+  padding: 12px;
+  color: white;
+}
