@@ -34,7 +34,7 @@
             <p><%= request.description %></p>
             <div>
               <p> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></p>
-              <%= link_to "Accept", request_path(request), class: 'show-btn-commission %>
+              <%= link_to "Accept", request_path(request), class: 'show-btn-commission' %>
             </div>
           </div>
         <% end %>
