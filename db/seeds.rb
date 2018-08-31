@@ -10,6 +10,24 @@ User.destroy_all
 Commission.destroy_all
 Request.destroy_all
 Art.destroy_all
+Order.destroy_all
+
+User.create(
+    first_name: "Nick",
+    last_name: "Johnson",
+    username: "NJ the juiceman",
+    email: "nick@bogdanoff.com",
+    password: "123123"
+    )
+
+User.create(
+    first_name: "Christian",
+    last_name: "Bell",
+    username: "ChristianBell",
+    email: "christianBell@bell.com",
+    password: "123123"
+    )
+
 
 images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg" ]
 
