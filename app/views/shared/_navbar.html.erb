@@ -9,7 +9,7 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-      <h5><%= link_to "Art", users_path, class: "navbar-wagon-item navbar-wagon-link #{'navbar-underline' if params[:controller] == 'users' && params[:action] == 'index'}" %></h5>
+      <h5><%= link_to "Artists", users_path, class: "navbar-wagon-item navbar-wagon-link #{'navbar-underline' if params[:controller] == 'users' && params[:action] == 'index'}" %></h5>
       <h5><%= link_to "Commissions", commissions_path, class: "navbar-wagon-item navbar-wagon-link #{'navbar-underline' if params[:controller] == 'commissions'}" %></h5>
 
     <% if user_signed_in? %>

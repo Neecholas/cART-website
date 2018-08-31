@@ -66,9 +66,12 @@ puts "Creating 10 Requests..."
   10.times do
     Request.create!(
       description: "I will do this for you!",
+
+
       amount: rand(1..15) * 10,
       commission_id: Commission.all.sample.id,
       user_id: User.all.sample.id,
+
       price_cents: rand(1..5) * 1000
     )
   end
