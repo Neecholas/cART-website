@@ -4,6 +4,23 @@
 <h4><%= @user.last_name %></h4>
 <h4><%= @user.bio %></h4>
 <% if current_user.id = params[:id] %>
+  <% if current_user.orders %>
+    <h2>Your orders</h2>
+    <% current_user.orders.each do |order| %>
+      <% if order.photo %>
+        <p>Your order is complete! Check your awesome request below</p>
+        <%= cl_image_tag(order.photo) %>
+      <% else %>
+        <p>The artist is working on this order!</p>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% @orders.each do |order| %>
+    <h2>Your pending commissions</h2>
+    <% if order.request.user = current_user.id %>
+      <p>hey there</p>
+    <% end %>
+  <% end %>
   <%= link_to "Put out a commission", new_commission_path %>
   <%= link_to "Add art", new_art_path %>
 <% end %>

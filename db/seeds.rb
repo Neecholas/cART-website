@@ -47,7 +47,6 @@ puts "Creating 5 Requests..."
   5.times do
     Request.create!(
       description: "I will do this for you!",
-      amount: rand(1..15) * 10,
       commission_id: Commission.first.id,
       user_id: User.last.id,
       price_cents: rand(1..5) * 1000
