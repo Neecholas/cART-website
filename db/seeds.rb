@@ -38,6 +38,7 @@ puts 'Creating 10 Users...'
     last_name: Faker::Name.last_name,
     username: Faker::Internet.username,
     email: Faker::Internet.email,
+    bio: "I’ve spent the last 40 years of my photographic career investigating movement and its expressive potential. My inspiration has always been photography’s ability to stop time and reveal what the naked eye cannot see. What intrigues me is making images that confound and confuse the viewer, but that the viewer knows, or suspects, really happened.",
     password: "123123"
   )
 end

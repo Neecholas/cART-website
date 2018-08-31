@@ -1,26 +1,32 @@
-<div class="background" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%), url('https://images.unsplash.com/photo-1503289130890-6eff9c5df553?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d4ed6009e8a0e8b6948ebe612d5827f&auto=format&fit=crop&w=1050&q=80');">
-  <div>
+<div class="background" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%), url('https://images.unsplash.com/photo-1485140662179-98e1bcb8e974?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=96549f65c78569876e32981e3fc10ae7&auto=format&fit=crop&w=963&q=80');">
+  <div class="luser">
     <h2>
       <%= @user.username %>
     </h2>
   </div>
 </div>
 
-<div class="prof-container">
-  <div class="prof-photo">
+<div class="prof-contain">
+  <div class="prof-mini-contain">
+    <div class="prof-photo">
+      <img src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80" style="width:260px; height:200px;">
+    </div>
+    <div class="prof-desc">
+      <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+      <h5>I’ve spent the last 40 years of my photographic career investigating movement and its expressive potential. My inspiration has always been photography’s ability to stop time and reveal what the naked eye cannot see. What intrigues me is making images that confound and confuse the viewer, but that the viewer knows, or suspects, really happened.</h5>
+    </div>
 
   </div>
-  <div class="prof-card">
+  <div>
+      <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
+      <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
+    </div>
+  <div class="prof-portfolio">
 
   </div>
-
-  <div class="prof-portfolio"></div>
 
 </div>
 
-<h4><%= @user.first_name %></h4>
-<h4><%= @user.last_name %></h4>
-<h4><%= @user.bio %></h4>
 <% if current_user.id = params[:id] %>
   <% if current_user.orders %>
     <h2>Your orders</h2>
@@ -39,7 +45,5 @@
       <p>hey there</p>
     <% end %>
   <% end %>
-  <%= link_to "Put out a commission", new_commission_path %>
-  <%= link_to "Add art", new_art_path %>
 <% end %>
 </div>
