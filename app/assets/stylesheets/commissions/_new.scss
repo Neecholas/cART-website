@@ -8,8 +8,9 @@
   background-color: transparent;
 }
 
-.container {
-  height:calc(100vh - 70px);
+.artist-container {
+  min-height:calc(100vh - 70px);
+  padding-bottom: 50px;
 
 }
 
