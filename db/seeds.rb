@@ -29,7 +29,11 @@ User.create(
     )
 
 
-images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg" ]
+images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg", "https://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/sheep.jpg",
+"http://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/people/smiling-man.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1535450758/samples/animals/three-dogs.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1535450751/samples/animals/cat.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1535450757/samples/bike.jpg"]
 
 puts 'Creating 10 Users...'
 10.times do
