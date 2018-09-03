@@ -2,5 +2,5 @@
 meta_product_name: "cART"
 meta_title: "cART - Art Commissions"
 meta_description: "The UK's leading art commissioning website, connecting artists with clients."
-meta_image: "video.gif"                       # should exist in `app/assets/images/`
+meta_image: "og-image.png"                       # should exist in `app/assets/images/`
 meta_type: "market place"
