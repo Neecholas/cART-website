@@ -23,6 +23,8 @@
   h4 {
     font-size: 18px;
     line-height: 1.5;
+    color: $gray;
+    font-family: "Merriweather";
   }
 }
 
@@ -49,11 +51,17 @@
 
 }
 
+.commission-btns {
+  padding: 4px;
+}
+
 
 .show-btn-commission {
   background-color: $turquiose;
   padding: 12px;
+  margin: 4px;
   color: white;
+  font-family: 'Lato';
 }
 
 .request-card {
