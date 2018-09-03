@@ -28,12 +28,9 @@
 </div>
 
 
-<h4><%= @user.first_name %></h4>
-<h4><%= @user.last_name %></h4>
-<h4><%= @user.bio %></h4>
 <% if current_user.id == @user.id %>
   <% if current_user.orders %>
-    <h2>Your orders</h2>
+    <h3>Your orders</h3>
     <% current_user.orders.each do |order| %>
       <% if order.photo %>
         <p>Your order is complete! Check your awesome request below</p>
@@ -43,11 +40,6 @@
       <% end %>
     <% end %>
   <% end %>
-
-
-
-  <%= link_to "Put out a commission", new_commission_path %>
-  <%= link_to "Add art", new_art_path %>
 <% end %>
 </div>
 
