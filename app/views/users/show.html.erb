@@ -31,7 +31,7 @@
 
 <div>
   <% if current_user.id == @user.id %>
-    <% if current_user.orders %>
+    <% unless current_user.orders.empty? %>
       <h3>Your orders</h3>
       <% current_user.orders.each do |order| %>
         <% if order.photo %>
@@ -42,9 +42,8 @@
         <% end %>
       <% end %>
     <% end %>
-    <p>--------</p>
-    <% if current_user.commissions %>
-      <h3>Requests to my commissions</h3>
+    <% unless current_user.commissions.empty? %>
+      <h3>My Commissions</h3>
       <% current_user.commissions.each do |commission| %>
         <%= commission.title %>
         <ul>
@@ -55,39 +54,46 @@
       <% end %>
     <% end %>
 
-    <h3>Requests that I made</h3>
-    <ul>
-      <% current_user.requests.each do |request| %>
-        <li><%= request.description %></li>
-      <% end %>
-    </ul>
+    <% unless current_user.requests.empty? %>
+      <h3>Requests that I made</h3>
+      <ul>
+        <% current_user.requests.each do |request| %>
+          <li><%= request.description %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
 
+    <% unless current_user.orders_as_commissioner.empty? %>
     <h3>Orders as a commissioner</h3>
-    <% current_user.orders_as_commissioner.each do |order| %>
-      <%= order.id %>
-      <% if order.photo_url %>
-        Order complete
-      <% else %>
-        Work in progress
+      <% current_user.orders_as_commissioner.each do |order| %>
+        <%= order.id %>
+        <% if order.photo_url %>
+          Order complete
+        <% else %>
+          Work in progress
+        <% end %>
       <% end %>
     <% end %>
 
-    <h3>Orders as a commissionee</h3>
-    <h1><%= current_user.orders_as_commissionee.count %></h1>
-    <ul>
-      <% current_user.orders_as_commissionee.each do |order| %>
-        <% if order.photo_url %>
-          Wait for feedback
-        <% else %>
-          <%= simple_form_for order do |f| %>
-            <%= f.input :photo %>
-            <%= f.input :photo_cache, as: :hidden %>
-            <%= f.submit %>
+
+    <% unless current_user.orders_as_commissionee %>
+      <h3>Orders as a commissionee</h3>
+      <h1><%= current_user.orders_as_commissionee.count %></h1>
+      <ul>
+        <% current_user.orders_as_commissionee.each do |order| %>
+          <% if order.photo_url %>
+            Wait for feedback
+          <% else %>
+            <%= simple_form_for order do |f| %>
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.submit %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
   <% end %>
 </div>
 
