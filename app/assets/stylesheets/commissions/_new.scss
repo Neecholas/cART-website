@@ -1,6 +1,7 @@
 
 .background-commission {
-  background-size: fill;
+  background-size: cover;
+  height: 85vh;
 }
 
 .com-container {
@@ -27,6 +28,11 @@
   }
 }
 
+.sub-btn-margin {
+  input {
+    margin-left: 0% !important;
+  }
+}
 
 .container h3 {
   border-bottom: 3px solid $turquiose;
