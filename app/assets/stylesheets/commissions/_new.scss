@@ -12,6 +12,10 @@
   background-color: transparent;
 }
 
+.com-width {
+  width: 376px;
+}
+
 .artist-container {
   min-height:calc(100vh - 70px);
   padding-bottom: 50px;
@@ -32,6 +36,10 @@
   input {
     margin-left: 0% !important;
   }
+}
+
+.btn-margin-left {
+  margin-left: 217px;
 }
 
 .container h3 {
