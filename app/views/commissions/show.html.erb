@@ -31,9 +31,14 @@
         <h3>Requests</h3>
         <% @commission.requests.each do |request| %>
           <div class="request-card">
-            <p><%= request.description %></p>
-            <div>
-              <p> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></p>
+            <div class="request-content">
+              <div class="request-content-header">
+                <h6><%= link_to "#{request.user.first_name} #{request.user.last_name}", user_path(request.user) %></h6>
+                <h6> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></h6>
+              </div>
+              <p><%= request.description %></p>
+            </div>
+            <div class="request-btn">
               <%= link_to "Accept", request_path(request), class: 'show-btn-commission' %>
             </div>
           </div>
