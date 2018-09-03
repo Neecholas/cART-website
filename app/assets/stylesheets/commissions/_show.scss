@@ -64,4 +64,19 @@
   box-shadow: 1px 2px 4px #f3f3f3;
   display: flex;
   justify-content: space-between;
+  background: $light-gray;
+}
+
+.request-content-header {
+  display: flex;
+  justify-content: space-between;
+  min-width: 734px;
+  h6 {
+    border-bottom: 1px $turquiose solid;
+  }
+}
+
+.request-btn {
+  padding: 24px;
+
 }
