@@ -11,6 +11,11 @@ Request.destroy_all
 Commission.destroy_all
 Art.destroy_all
 User.destroy_all
+images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg", "https://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/sheep.jpg",
+"http://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/people/smiling-man.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1535450758/samples/animals/three-dogs.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1535450751/samples/animals/cat.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1535450757/samples/bike.jpg"]
 
 User.create(
     first_name: "Nick",
@@ -20,6 +25,18 @@ User.create(
     password: "123123"
     )
 
+Art.create!(
+  title: "Nick",
+  photo: open(images.sample),
+  user_id: 1)
+
+Commission.create!(
+  title: "Nick's test commission",
+  description: "Use this to test front end",
+  amount: 1066,
+  photo: open(images.sample),
+  user_id: 1)
+
 User.create(
     first_name: "Christian",
     last_name: "Bell",
@@ -28,12 +45,14 @@ User.create(
     password: "123123"
     )
 
+Request.create!(
+  description: "I will do this for you!",
+  commission_id: 1,
+  user_id: 2,
+  price_cents: 15
+)
 
-images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg", "https://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/sheep.jpg",
-"http://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/people/smiling-man.jpg",
-"https://res.cloudinary.com/dghextejt/image/upload/v1535450758/samples/animals/three-dogs.jpg",
-"https://res.cloudinary.com/dghextejt/image/upload/v1535450751/samples/animals/cat.jpg",
-"https://res.cloudinary.com/dghextejt/image/upload/v1535450757/samples/bike.jpg"]
+
 
 puts 'Creating 10 Users...'
 10.times do
