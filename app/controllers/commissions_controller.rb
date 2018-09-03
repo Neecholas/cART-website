@@ -1,6 +1,10 @@
 class CommissionsController < ApplicationController
   def index
-    @commissions = Commission.all
+    if params[:query].present?
+      @commissions = Commission.where("title ILIKE ?", "%#{params[:query]}%")
+    else
+      @commissions = Commission.all
+    end
   end
 
   def show
