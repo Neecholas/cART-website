@@ -40,7 +40,7 @@
               <p><%= request.description %></p>
             </div>
             <div class="request-btn">
-              <%= link_to "Accept", request_path(request), class: 'show-btn-commission' %>
+              <%= link_to "Accept", orders_path(request_id: request.id), method: :post, class: 'show-btn-commission'  %>
             </div>
           </div>
         <% end %>
