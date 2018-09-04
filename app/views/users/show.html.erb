@@ -6,94 +6,99 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="fuccu">
+<div class="container">
+  <div class="row">
+    <div class="fuccu">
 
-      <div class="col-xs-12 col-md-4">
-        <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-      </div>
-      <div class="col-xs-12 col-md-4">
-        <div class="prof-desc">
-        <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-        <h5>@<%= @user.username %></h5>
-        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
-      </div>
-      </div>
         <div class="col-xs-12 col-md-4">
-          <div class="prof-btns">
-          <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
-          <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
+          <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
         </div>
-      </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="prof-desc">
+          <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+          <h5>@<%= @user.username %></h5>
+          <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+        </div>
+        </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="prof-btns">
+            <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
+            <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
+          </div>
+        </div>
+    </div>
   </div>
-</div>
 
 
-  <div class="prof-portfolio">
+    <div class="prof-portfolio">
 
-  </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-<div>
-  <% if current_user.id == @user.id %>
-    <% unless current_user.orders.empty? %>
-      <h3>Your orders</h3>
-      <% current_user.orders.each do |order| %>
-        <% if order.photo %>
-          <p>Your order is complete! Check your awesome request below</p>
-          <%= cl_image_tag(order.photo) %>
-        <% else %>
-          <p>The artist is working on this order!</p>
+  <div>
+    <% if current_user.id == @user.id %>
+      <% unless current_user.orders.empty? %>
+        <h3>Your orders</h3>
+          <% current_user.orders.each do |order| %>
+            <% if order.photo %>
+              <p>Your order is complete! Check your awesome request below</p>
+              <%= cl_image_tag(order.photo) %>
+            <% else %>
+              <p>The artist is working on this order!</p>
+            <% end %>
+            <%= link_to "show", commission_path(order.request.commission), class: "turquiose-btn" %>
+          <% end %>
         <% end %>
-        <%= link_to "show", commission_path(order.request.commission), class: "turquiose-btn" %>
-      <% end %>
-    <% end %>
-    <% unless current_user.commissions.empty? %>
-      <h3>My Commissions</h3>
-      <% current_user.commissions.each do |commission| %>
-        <%= commission.title %>
-        <%= link_to "show", commission_path(commission), class: "turquiose-btn" %>
-        <% unless commission.requests.empty? %>
-          <p>You have <%= commission.requests.length %> requests</p>
-        <% else %>
-          <p>No requests yet</p>
+        <% unless current_user.commissions.empty? %>
+          <h3>My Commissions</h3>
+          <% current_user.commissions.each do |commission| %>
+            <div class="request-card">
+              <div class="request-content">
+                <div class="request-content-header">
+                  <h6><%= commission.title %></h6>
+                </div>
+                  <% unless commission.requests.empty? %>
+                    <p>You have <%= commission.requests.length %> requests</p>
+                  <% else %>
+                    <p>No requests yet</p>
+                  <% end %>
+              </div>
+              <div class="request-btn">
+                <%= link_to "show", commission_path(commission), class: "turquiose-btn" %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
 
-    <% unless current_user.requests.empty? %>
-      <h3>My requests</h3>
-      <ul>
+      <% unless current_user.requests.empty? %>
+
+        <h3>My requests</h3>
         <% current_user.requests.each do |request| %>
-          <li>
-            <%= request.description %>
-            <% if request.status %>
-              <% if request.order.photo_url %>
-                This commission has been completed!
-              <% else %>
-                <%= simple_form_for request.order do |f| %>
-                  <%= f.input :photo %>
-                  <%= f.input :photo_cache, as: :hidden %>
-                  <%= f.submit %>
+          <div class="request-card">
+            <div class="request-content">
+              <div class="request-content-header">
+                <h5><%= request.commission.title %></h5>
+              </div>
+              <%= request.description %>
+              <% if request.status %>
+                <% if request.order.photo_url %>
+                  This commission has been completed!
+                <% else %>
+                  <%= simple_form_for request.order do |f| %>
+                    <%= f.input :photo %>
+                    <%= f.input :photo_cache, as: :hidden %>
+                    <%= f.submit %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-          </li>
+            </div>
+            <div class="request-btn">
+              <%= link_to "show", commission_path(request.commission), class: "turquiose-btn" %>
+            </div>
+          </div>
         <% end %>
-      </ul>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
-
 
 
