@@ -41,6 +41,7 @@
         <% else %>
           <p>The artist is working on this order!</p>
         <% end %>
+        <%= link_to "show", commission_path(order.request.commission), class: "turquiose-btn" %>
       <% end %>
     <% end %>
     <% unless current_user.commissions.empty? %>
@@ -50,37 +51,8 @@
         <%= link_to "show", commission_path(commission), class: "turquiose-btn" %>
         <% unless commission.requests.empty? %>
           <p>You have <%= commission.requests.length %> requests</p>
-          <ul>
-            <% commission.requests.each do |request| %>
-              <% unless request.status %>
-                <li>
-                  <%= request.user.username %>
-                  <%= request.description %>
-                  <%= request.price_cents %>
-                  <%= link_to "Accept", request_accept_path(request), class: "turquiose-btn" %>
-                </li>
-              <% else %>
-                <% if request.status %>
-                  <% current_user.orders_as_commissioner.each do |order| %>
-                    <% if order.request.user == current_user %>
-                      <%= order.id %>
-                      <% if order.photo_url %>
-                        Order completed!
-                      <% else %>
-                        Work in progress
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% else %>
-                  pending response from commissioner
-                <% end %>
-              <% end %>
-            <% end %>
-          </ul>
         <% else %>
-          <ul>
-            <li>No commissions yet</li>
-          </ul>
+          <p>No requests yet</p>
         <% end %>
       <% end %>
     <% end %>
@@ -92,10 +64,10 @@
           <li>
             <%= request.description %>
             <% if request.status %>
-              <% if order.photo_url %>
+              <% if request.order.photo_url %>
                 This commission has been completed!
               <% else %>
-                <%= simple_form_for order do |f| %>
+                <%= simple_form_for request.order do |f| %>
                   <%= f.input :photo %>
                   <%= f.input :photo_cache, as: :hidden %>
                   <%= f.submit %>
@@ -104,21 +76,6 @@
             <% end %>
           </li>
         <% end %>
-      </ul>
-    <% end %>
-
-
-    <% unless current_user.orders_as_commissioner.empty? %>
-    <h3>Orders as a commissioner</h3>
-    <% end %>
-
-
-    <% unless current_user.orders_as_commissionee %>
-      <h3>Orders as a commissionee</h3>
-        <% current_user.orders_as_commissionee.each do |order| %>
-        <% end %>
-      <h1><%= current_user.orders_as_commissionee.count %></h1>
-      <ul>
       </ul>
     <% end %>
   <% end %>

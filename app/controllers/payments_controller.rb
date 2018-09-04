@@ -20,6 +20,17 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
+    request = @order.request
+    request.status = true
+    request.save
+    commission = @order.request.commission
+    commission.requests.each do |request|
+      unless request.status
+        request.destroy
+      end
+    end
+    commission.status = true
+    commission.save
     redirect_to order_path(@order)
 
   rescue Stripe::CardError => e

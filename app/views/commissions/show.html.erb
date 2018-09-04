@@ -50,10 +50,30 @@
             </div>
           </div>
         <% end %>
-      <% elsif @commission.status == 'accepted' %>
-        <h2>This commission has been accepted!</h2>
+      <% elsif @commission.status %>
+        <% if @commission.requests.first.order.photo_url.nil?  %>
+          <p>The artist is working on this commission!</p>
+        <% else %>
+          <h4>Done! See your finished art below!</h4>
+          <%= cl_image_tag(@commission.requests.first.order.photo_url) %>
+        <% end %>
       <% end %>
     <% end %>
+    <!-- handles a true commission -->
+    <% if @commission.status %>
+      <% if current_user.id == @commission.requests.first.user %>
+        <% if @commission.request.order.photo_url %>
+          This commission has been completed!
+        <% else %>
+          <%= simple_form_for @commission.request.order do |f| %>
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
+            <%= f.submit %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
 
