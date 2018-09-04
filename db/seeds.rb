@@ -17,7 +17,7 @@ images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h
 "https://res.cloudinary.com/dghextejt/image/upload/v1535450751/samples/animals/cat.jpg",
 "https://res.cloudinary.com/dghextejt/image/upload/v1535450757/samples/bike.jpg"]
 
-User.create(
+a = User.create(
     first_name: "Nick",
     last_name: "Johnson",
     username: "NJ the juiceman",
@@ -28,16 +28,16 @@ User.create(
 Art.create!(
   title: "Nick",
   photo: open(images.sample),
-  user_id: 1)
+  user: a)
 
-Commission.create!(
+c = Commission.create!(
   title: "Nick's test commission",
   description: "Use this to test front end",
   amount: 1066,
   photo: open(images.sample),
-  user_id: 1)
+  user: a)
 
-User.create(
+b = User.create(
     first_name: "Christian",
     last_name: "Bell",
     username: "ChristianBell",
@@ -47,8 +47,8 @@ User.create(
 
 Request.create!(
   description: "I will do this for you!",
-  commission_id: 1,
-  user_id: 2,
+  commission: c,
+  user: b,
   price_cents: 15
 )
 
@@ -71,7 +71,7 @@ puts 'Creating 10 Arts...'
   Art.create!(
     title: Faker::BojackHorseman.character,
     photo: open(images.sample),
-    user_id: User.all.sample.id
+    user: User.all.sample
     )
 end
 
@@ -82,19 +82,19 @@ puts 'Creating 10 Commissions...'
     description: Faker::BojackHorseman.quote,
     amount: rand(1..15) * 10,
     photo: open(images.sample),
-    user_id: User.all.sample.id
+    user: User.all.sample
   )
 end
 
-puts "Creating 10 Requests..."
-  10.times do
-    Request.create!(
-      description: "I will do this for you!",
-      commission_id: Commission.all.sample.id,
-      user_id: User.all.sample.id,
+# puts "Creating 10 Requests..."
+  # 10.times do
+  #   Request.create!(
+  #     description: "I will do this for you!",
+  #     commission_id: Commission.all.sample.id,
+  #     user: User.all.sample,
 
-      price_cents: rand(10..50)
-    )
-  end
+  #     price_cents: rand(10..50)
+  #   )
+  # end
 
 puts 'Finished!'
