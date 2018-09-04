@@ -11,17 +11,18 @@
     <div class="prof-photo">
       <img src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80" style="width:200px; height:200px;">
     </div>
+
     <div class="prof-desc">
       <h3><%= @user.first_name %> <%= @user.last_name %></h3>
       <h5>@<%= @user.username %></h5>
-      <h5>I’ve spent the last 40 years of my photographic career investigating movement and its expressive potential. My inspiration has always been photography’s ability to stop time and reveal what the naked eye cannot see. What intrigues me is making images that confound and confuse the viewer, but that the viewer knows, or suspects, really happened.</h5>
+      <h5><%= @user.bio %></h5>
     </div>
-  </div>
 
-  <div>
+    <div class="prof-btns">
       <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
       <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
     </div>
+  </div>
 
   <div class="prof-portfolio">
 

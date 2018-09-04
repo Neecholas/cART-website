@@ -9,27 +9,37 @@
   justify-content: center;
 }
 
-.luser h2 {
-  color: white;
-}
-
 .prof-mini-contain {
   display: flex;
-  justify-content: center;
-    width: 50%;
-    margin: 5px auto;
-    img {
-      margin-right: 20px;
-    }
+  margin-top: 30px;
+  margin-bottom:30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+// ---------------------------------------
+.prof-photo {
+
+  margin-right: 20px;
+
 }
 
-.prof-desc h3 {
- margin-top: 0px;
+.prof-desc {
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .prof-desc h5 {
   font-size: 16px;
 }
+
+
+.prof-btns {
+  margin-left: 20px;
+  width: 3000px;
+  max-width: 3000px;
+}
+
+
 
 .orderz {
   border-bottom: 3px solid $turquiose;
@@ -41,4 +51,7 @@
 .prof-contain h3 {
   border-bottom: 3px solid $turquiose;
   padding-bottom:10px;
+}
+.luser h2 {
+  color: white;
 }
