@@ -1,5 +1,11 @@
-<div class="banner banner-show" >
-</div>
+
+<% if @commission.photo %>
+  <div class="banner-show" style="background-image: url('<%= cl_image_path @commission.photo, class: "artist-image"; %>');">
+  </div>
+<% else %>
+  <div class="banner-show" style="background-image: url('com-background.jpg');">>
+  </div>
+<% end %>
 
 <div class="commission-section">
   <div class="container">
