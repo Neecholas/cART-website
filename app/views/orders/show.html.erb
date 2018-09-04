@@ -1,6 +1,22 @@
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.state %></li>
-  <li>Item: <%= @order.request_sku %></li>
-  <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-<ul>
+<div class="background-commission" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%), url('https://ohsooclean.com/wp-content/uploads/2018/06/testimonials.jpg');">
+  <div class="container">
+    <div class="com-container">
+      <div class= "com-card">
+        <% @order.request_sku %>
+        <h3>Your Order - Status: <%= @order.state.capitalize %>!</h3>
+        <div class="order-subheading">
+          <h4 class="">Your Commission: <%= @order.request.commission.title %></h4>
+          <p><%= @order.request.commission.description %></p>
+
+          <h4 class="">Your Artist: <%= "#{@order.request.user.first_name} #{@order.request.user.last_name}"%></h4>
+          <p><%= @order.request.description %></p>
+
+          <h4 class="">Amount</h4>
+          <p><%= humanized_money_with_symbol(@order.amount) %></p>
+
+          <%= link_to "Return to Commission", commission_path(@order.request.commission), class: 'show-btn-commission' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
