@@ -1,37 +1,61 @@
 @import "new";
 @import "show";
 
+.com-card-right {
+  border-right: none !important;
+  padding: 20px !important;
+}
+
 .com-index-card {
-  margin: 16px;
-  padding: 16px;
-  background: $light-gray;
+  margin: 0 11px;
+  padding: 32px;
+  border-bottom: 1px solid $turquiose;
+  border-right: 1px solid $turquiose;
 }
 
  .com-index-card:hover {
   transition-timing-function: ease-in;
   transition: 0.5s;
-  background: $dark-gray;
-  h3 {
-    color: $light-gray;
-  }
-  h5 {
-    color: $light-gray;
-  }
+  background-color: #EFECEC;
+
   a {
     text-decoration: none;
+  }
+
+  h5 {
+    text-decoration: underline $turquiose;
   }
 }
 
 .com-content {
-  h5 {
+  margin: 0px 52px;
+  h6 {
     font-family: 'Merriweather';
     font-weight: lighter;
     color: $gray;
     padding-bottom: 24px;
     padding-top: 8px;
   }
+  p {
+    padding: 8px;
+    margin: 0px 24px;
+    padding-bottom: 16px;
+  }
 }
 
 .commission-column {
   margin: -26px !important;
+}
+
+.com-title {
+  display: flex;
+  justify-content: space-between
+}
+
+.card-break {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: lighter;
+  color: $turquiose;
 }

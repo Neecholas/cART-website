@@ -1,3 +1,5 @@
+<div class="" style="background-image:url('com-index.jpg');">
+
 
 <div class="artist-search-container">
   <div class="artist-search-icon">
@@ -23,33 +25,40 @@
                 <%= link_to commission_path(commission) do  %>
                   <div class="com-link"></div>
                   <div class="com-content">
-                    <h3><%= commission.title %></h3>
-                    <h5><%= commission.description %></h5>
                     <% if commission.amount %>
-                      <h3>£<%= commission.amount %></h3>
-                    <% else %>
-                      <h5>No price range specified</h5>
-                    <% end %>
+                      <div class="com-title">
+                        <h5><%= commission.title %></h5>
+                        <h5>£<%= commission.amount %></h5>
+                      </div>
+                        <p><%= commission.description %></p>
+                      <% else %>
+                        <h5><%= commission.title %></h5>
+                        <p><%= commission.description %></p>
+                      <% end %>
                   </div>
                 <% end %>
               </div>
+              <!-- <div class="card-break"><i class="fas fa-angle-double-down"></i></div> -->
           <% end %>
         </div>
       </div>
       <div class="col-xs-12 col-sm-5">
          <div class="artist-column commission-column">
            <% @commissions.select{|commission| commission.id.odd?}.each do |commission| %>
-              <div class="com-index-card com-card-height">
+              <div class="com-index-card com-card-right">
                 <%= link_to commission_path(commission) do  %>
                   <div class="com-link"></div>
                   <div class="com-content">
-                    <h3><%= commission.title %></h3>
-                    <h5><%= commission.description %></h5>
                     <% if commission.amount %>
-                      <h3>£<%= commission.amount %></h3>
-                    <% else %>
-                      <h5>No price range specified</h5>
-                    <% end %>
+                      <div class="com-title">
+                        <h5><%= commission.title %></h5>
+                        <h5>£<%= commission.amount %></h5>
+                      </div>
+                        <p><%= commission.description %></p>
+                      <% else %>
+                        <h5><%= commission.title %></h5>
+                        <p><%= commission.description %></p>
+                      <% end %>
                   </div>
                 <% end %>
               </div>
