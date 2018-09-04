@@ -6,29 +6,43 @@
   </div>
 </div>
 
-<div class="prof-contain">
-  <div class="prof-mini-contain">
-    <div class="prof-photo">
-      <img src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80" style="width:200px; height:200px;">
-    </div>
+<div class="row">
+  <div class="fuccu">
 
-    <div class="prof-desc">
-      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-      <h5>@<%= @user.username %></h5>
-      <h5><%= @user.bio %></h5>
-    </div>
-
-    <div class="prof-btns">
-      <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
-      <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
-    </div>
+      <div class="col-xs-12 col-md-4">
+        <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <div class="prof-desc">
+        <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+        <h5>@<%= @user.username %></h5>
+        <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+      </div>
+      </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="prof-btns">
+          <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
+          <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
+        </div>
+      </div>
   </div>
+</div>
+
 
   <div class="prof-portfolio">
 
   </div>
 
-</div>
+
+
+
+
+
+
+
+
+
+
 
 <div>
   <% if current_user.id == @user.id %>
