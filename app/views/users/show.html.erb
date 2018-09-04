@@ -47,7 +47,9 @@
       <h3>My Commissions</h3>
       <% current_user.commissions.each do |commission| %>
         <%= commission.title %>
+        <%= link_to "show", commission_path(commission), class: "turquiose-btn" %>
         <% unless commission.requests.empty? %>
+          <p>You have <%= commission.requests.length %> requests</p>
           <ul>
             <% commission.requests.each do |request| %>
               <% unless request.status %>
