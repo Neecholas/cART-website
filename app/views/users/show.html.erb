@@ -40,23 +40,29 @@
       <% unless current_user.orders.empty? %>
         <h3>Your Orders</h3>
         <% current_user.orders.each do |order| %>
-          <div class="request-card">
-            <div class="request-content">
-              <div class="request-content-header">
-
-              <% if order.photo %>
-                <h6><%= order.request.commission.title %></h6>
-              </div>
-                <p>Your order is complete! Check your awesome request below</p>
+          <% if order.photo %>
+            <div class="order-card">
+              <div class="order-image">
                 <%= cl_image_tag(order.photo)%>
-              <% else %>
-                <p>The artist is working on this order!</p>
-              <% end %>
+              </div>
+              <div class="order-content">
+                <h6><%= order.request.commission.title %></h6>
+                <p>Your order is complete! Check your awesome request below</p>
+              </div>
             </div>
-            <div class="request-btn">
-              <%= link_to "Show Order", order_path(order), class: "turquiose-btn" %>
+          <% else %>
+            <div class="request-card">
+              <div class="request-content ">
+                <div class="request-content-header">
+                  <h6><%= order.request.commission.title %></h6>
+                </div>
+                  <p>The artist is working on this order!</p>
+              </div>
+              <div class="request-btn">
+                <%= link_to "Show Order", order_path(order), class: "turquiose-btn" %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
       <% unless current_user.commissions.empty? %>
