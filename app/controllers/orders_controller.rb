@@ -21,6 +21,6 @@ class OrdersController < ApplicationController
   private
 
   def orders_params
-    params.require(:order).permit(:photo)
+    params.require(:order).permit(:photo, :message)
   end
 end
