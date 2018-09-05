@@ -41,6 +41,7 @@ a = User.create(
     last_name: "Johnson",
     username: "NJ the juiceman",
     email: "nick@bogdanoff.com",
+    bio: bios.sample,
     password: "123123"
     )
 
@@ -60,6 +61,7 @@ b = User.create(
     first_name: "Christian",
     last_name: "Bell",
     username: "ChristianBell",
+    bio: bios.sample,
     email: "christianBell@bell.com",
     password: "123123"
     )

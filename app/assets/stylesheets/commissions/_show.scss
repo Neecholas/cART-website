@@ -68,6 +68,10 @@
   font-family: 'Lato';
 }
 
+.request-card-container {
+  padding: 0 100px;
+}
+
 .request-card {
   border: 1px solid #efefef;
   border-radius: 3px;
@@ -90,5 +94,38 @@
 
 .request-btn {
   padding: 24px;
+}
 
+.request-form {
+  input:nth-child(2) {
+
+  }
+}
+
+.update-btn {
+padding-top: 24px;
+}
+
+.request-form-submit {
+  background-color: $turquiose;
+  height: 46px;
+  width: 153px;
+  padding: 10px 15px;
+  font-family: 'Lato';
+  letter-spacing: 1px;
+  font-weight: lighter;
+  border-radius: 2px;
+  //box-shadow:
+
+  color: $light-gray;
+
+    &:hover {
+    color: $light-gray;
+    background-color:$gray;
+    text-decoration: none;
+  }
+}
+
+.request-content {
+  max-width: 600px;
 }
