@@ -102,6 +102,7 @@
                 <% else %>
                   <%= simple_form_for request.order do |f| %>
                     <%= f.input :photo %>
+                    <%= f.input :message %>
                     <%= f.input :photo_cache, as: :hidden %>
                     <%= f.submit %>
                   <% end %>
