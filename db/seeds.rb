@@ -17,6 +17,8 @@ images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h
 "https://res.cloudinary.com/dghextejt/image/upload/v1535450751/samples/animals/cat.jpg",
 "https://res.cloudinary.com/dghextejt/image/upload/v1535450757/samples/bike.jpg"]
 
+img_one = "https://res.cloudinary.com/dghextejt/image/upload/v1536140516/kbthwperzeczpfdtoh2d.jpg"
+
 a = User.create(
     first_name: "Nick",
     last_name: "Johnson",
@@ -44,6 +46,28 @@ b = User.create(
     email: "christianBell@bell.com",
     password: "123123"
     )
+
+Art.create(
+  title: "img1",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140516/kbthwperzeczpfdtoh2d.jpg",
+  user: b
+  )
+Art.create(
+  title: "img2",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140578/ojc0glalg88czrgcjjil.jpg",
+  user: b
+  )
+Art.create(
+  title: "img3",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140659/uermp4tbqyjqgbb4sjoh.jpg",
+  user: b
+  )
+Art.create(
+  title: "img4",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140770/kql6nar04tz0ykynbdwi.jpg",
+  user: b
+  )
+
 
 Request.create!(
   description: "I will do this for you!",
