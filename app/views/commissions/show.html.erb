@@ -25,47 +25,53 @@
       </div>
     </div>
     <!-- <h2>Email:<%#= @commission.user.email %></h2> -->
-    <% if current_user.id == @commission.user.id %>
-      <% if @commission.status.nil? %>
-        <h3>Requests</h3>
-        <% @commission.requests.each do |request| %>
-          <div class="request-card">
-            <div class="request-content">
-              <div class="request-content-header">
-                <h6><%= link_to "#{request.user.first_name} #{request.user.last_name}", user_path(request.user) %></h6>
-                <h6> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></h6>
+    <div class="request-card-container">
+      <% if current_user.id == @commission.user.id %>
+        <% if @commission.status.nil? %>
+          <h3>Requests</h3>
+          <% @commission.requests.each do |request| %>
+            <div class="request-card">
+              <div class="request-content">
+                <div class="request-content-header">
+                  <h6><%= link_to "#{request.user.first_name} #{request.user.last_name}", user_path(request.user) %></h6>
+                  <h6> Amount: <%=  humanized_money_with_symbol(request.price_cents) %></h6>
+                </div>
+                <p><%= request.description %></p>
               </div>
-              <p><%= request.description %></p>
+              <div class="request-btn">
+                <%= link_to "Accept", orders_path(request_id: request.id), method: :post, class: 'show-btn-commission'  %>
+              </div>
             </div>
-            <div class="request-btn">
-              <%= link_to "Accept", orders_path(request_id: request.id), method: :post, class: 'show-btn-commission'  %>
+          <% end %>
+        <% elsif @commission.status %>
+          <% if @commission.requests.first.order.photo_url.nil?  %>
+            <p>The artist is working on this commission!</p>
+          <% else %>
+            <div class="order-card">
+              <div class="request-image">
+                <%= cl_image_tag(@commission.requests.first.order.photo_url) %>
+              </div>
+              <!-- This is where I would like the name of the artist and a message that they've sent  -->
+                <h5><%=  %></h5>
             </div>
-          </div>
-        <% end %>
-      <% elsif @commission.status %>
-        <% if @commission.requests.first.order.photo_url.nil?  %>
-          <p>The artist is working on this commission!</p>
-        <% else %>
-          <h4>Done! See your finished art below!</h4>
-          <%= cl_image_tag(@commission.requests.first.order.photo_url) %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <!-- handles a true commission -->
-    <% if @commission.status %>
-      <% if current_user.id == @commission.requests.first.user %>
-        <% if @commission.request.order.photo_url %>
-          This commission has been completed!
-        <% else %>
-          <%= simple_form_for @commission.request.order do |f| %>
-            <%= f.input :photo %>
-            <%= f.input :photo_cache, as: :hidden %>
-            <%= f.submit %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-
+      <!-- handles a true commission -->
+      <% if @commission.status %>
+        <% if current_user.id == @commission.requests.first.user %>
+          <% if @commission.request.order.photo_url %>
+            This commission has been completed!
+          <% else %>
+            <%= simple_form_for @commission.request.order do |f| %>
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.submit %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
