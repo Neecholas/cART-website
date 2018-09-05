@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(orders_params)
+    flash[:notice] = "Your picture has been uploaded!"
     redirect_to user_path(current_user)
   end
 

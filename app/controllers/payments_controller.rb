@@ -31,7 +31,9 @@ class PaymentsController < ApplicationController
     end
     commission.status = true
     commission.save
-    redirect_to order_path(@order)
+
+    flash[:notice] = 'Your artist is working on it'
+    redirect_to commission_path(commission)
 
   rescue Stripe::CardError => e
     flash[:alert] = e.message
