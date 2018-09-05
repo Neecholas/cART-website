@@ -47,15 +47,12 @@
           <% if @commission.requests.first.order.photo_url.nil?  %>
             <p>The artist is working on this commission!</p>
           <% else %>
-            <div class="request-card">
-              <div class="request-content">
-                <div class="request-content-header">
-                  <h4>Done! See your finished art below!</h4>
-                </div>
-                <div class="request-image">
-                  <%= cl_image_tag(@commission.requests.first.order.photo_url) %>
-                </div>
+            <div class="order-card">
+              <div class="request-image">
+                <%= cl_image_tag(@commission.requests.first.order.photo_url) %>
               </div>
+              <!-- This is where I would like the name of the artist and a message that they've sent  -->
+                <h5><%=  %></h5>
             </div>
           <% end %>
         <% end %>
