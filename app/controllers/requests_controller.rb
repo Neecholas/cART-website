@@ -16,6 +16,7 @@ class RequestsController < ApplicationController
     @request.commission = Commission.find(params[:commission_id])
     @request.user = current_user
     @request.save
+    flash[:notice] = "Request successfully created"
     redirect_to commission_path(@commission)
   end
 
