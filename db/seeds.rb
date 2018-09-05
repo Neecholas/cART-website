@@ -36,6 +36,7 @@ bios = ["When my hand moves over the canvass it's almost like my mind is directi
 "I’ve spent the last 40 years of my photographic career investigating movement and its expressive potential. My inspiration has always been photography’s ability to stop time and reveal what the naked eye cannot see. What intrigues me is making images that confound and confuse the viewer, but that the viewer knows, or suspects, really happened."
 ]
 
+
 a = User.create(
     first_name: "Nick",
     last_name: "Johnson",
@@ -66,46 +67,75 @@ b = User.create(
     password: "123123"
     )
 
-Request.create!(
+Art.create(
+  title: "img1",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140516/kbthwperzeczpfdtoh2d.jpg",
+  user: b
+  )
+Art.create(
+  title: "img2",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140578/ojc0glalg88czrgcjjil.jpg",
+  user: b
+  )
+Art.create(
+  title: "img3",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140659/uermp4tbqyjqgbb4sjoh.jpg",
+  user: b
+  )
+Art.create(
+  title: "img4",
+  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140770/kql6nar04tz0ykynbdwi.jpg",
+  user: b
+  )
+
+
+req = Request.create!(
   description: "I will do this for you!",
   commission: c,
   user: b,
   price_cents: 15
 )
 
+# ord = Order.create!(
+#   state: "pending",
+#   amount_cents: 1500,
+#   user: a,
+#   request: req
+#   )
 
 
-puts 'Creating 10 Users...'
-15.times do
-  User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    username: Faker::Internet.username,
-    email: Faker::Internet.email,
-    bio: bios.sample,
-    password: "123123"
-  )
-end
 
-puts 'Creating 10 Arts...'
-20.times do
-  Art.create!(
-    title: Faker::BojackHorseman.character,
-    photo: open(images.sample),
-    user: User.all.sample
-    )
-end
+# puts 'Creating 10 Users...'
+# 15.times do
+#   User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     username: Faker::Internet.username,
+#     email: Faker::Internet.email,
+#     bio: bios.sample,
+#     password: "123123"
+#   )
+# end
 
-puts 'Creating 10 Commissions...'
-10.times do
-  Commission.create!(
-    title: titles.sample,
-    description: descriptions.sample,
-    amount: rand(1..15) * 10,
-    photo: open(images.sample),
-    user: User.all.sample
-  )
-end
+# puts 'Creating 10 Arts...'
+# 20.times do
+#   Art.create!(
+#     title: Faker::BojackHorseman.character,
+#     photo: open(images.sample),
+#     user: User.all.sample
+#     )
+# end
+
+# puts 'Creating 10 Commissions...'
+# 10.times do
+#   Commission.create!(
+#     title: titles.sample,
+#     description: descriptions.sample,
+#     amount: rand(1..15) * 10,
+#     photo: open(images.sample),
+#     user: User.all.sample
+#   )
+# end
 
 # puts "Creating 10 Requests..."
   # 10.times do
