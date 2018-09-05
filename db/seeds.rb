@@ -67,26 +67,47 @@ b = User.create(
     password: "123123"
     )
 
-Art.create(
+art1 = Art.new(
   title: "img1",
-  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140516/kbthwperzeczpfdtoh2d.jpg",
   user: b
   )
-Art.create(
+art1.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536140516/kbthwperzeczpfdtoh2d.jpg')
+art1.save
+
+art2 = Art.new(
   title: "img2",
-  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140578/ojc0glalg88czrgcjjil.jpg",
   user: b
   )
-Art.create(
+art2.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536140578/ojc0glalg88czrgcjjil.jpg')
+art2.save
+
+art3 = Art.new(
   title: "img3",
-  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140659/uermp4tbqyjqgbb4sjoh.jpg",
   user: b
   )
-Art.create(
+art3.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536140659/uermp4tbqyjqgbb4sjoh.jpg')
+art3.save
+
+art4 = Art.new(
   title: "img4",
-  photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536140770/kql6nar04tz0ykynbdwi.jpg",
   user: b
   )
+art4.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536140770/kql6nar04tz0ykynbdwi.jpg')
+art4.save
+
+art5 = Art.new(
+  title: "img5",
+  user: b
+  )
+art5.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536160815/oa1scadi197xw4e7qyf8.jpg')
+art5.save
+
+art6 = Art.new(
+  title: "img6",
+  user: b
+  )
+art6.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536160839/xpui9pf2xoj57dsm2p4b.jpg')
+art6.save
 
 
 req = Request.create!(
