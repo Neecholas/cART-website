@@ -87,46 +87,53 @@ Art.create(
   )
 
 
-Request.create!(
+req = Request.create!(
   description: "I will do this for you!",
   commission: c,
   user: b,
   price_cents: 15
 )
 
+# ord = Order.create!(
+#   state: "pending",
+#   amount_cents: 1500,
+#   user: a,
+#   request: req
+#   )
 
 
-puts 'Creating 10 Users...'
-15.times do
-  User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    username: Faker::Internet.username,
-    email: Faker::Internet.email,
-    bio: bios.sample,
-    password: "123123"
-  )
-end
 
-puts 'Creating 10 Arts...'
-20.times do
-  Art.create!(
-    title: Faker::BojackHorseman.character,
-    photo: open(images.sample),
-    user: User.all.sample
-    )
-end
+# puts 'Creating 10 Users...'
+# 15.times do
+#   User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     username: Faker::Internet.username,
+#     email: Faker::Internet.email,
+#     bio: bios.sample,
+#     password: "123123"
+#   )
+# end
 
-puts 'Creating 10 Commissions...'
-10.times do
-  Commission.create!(
-    title: titles.sample,
-    description: descriptions.sample,
-    amount: rand(1..15) * 10,
-    photo: open(images.sample),
-    user: User.all.sample
-  )
-end
+# puts 'Creating 10 Arts...'
+# 20.times do
+#   Art.create!(
+#     title: Faker::BojackHorseman.character,
+#     photo: open(images.sample),
+#     user: User.all.sample
+#     )
+# end
+
+# puts 'Creating 10 Commissions...'
+# 10.times do
+#   Commission.create!(
+#     title: titles.sample,
+#     description: descriptions.sample,
+#     amount: rand(1..15) * 10,
+#     photo: open(images.sample),
+#     user: User.all.sample
+#   )
+# end
 
 # puts "Creating 10 Requests..."
   # 10.times do
