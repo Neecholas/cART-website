@@ -53,6 +53,7 @@
               </div>
               <div class="request-btn">
                 <%= link_to "Accept", orders_path(request_id: request.id), method: :post, class: 'show-btn-commission'  %>
+                <%= link_to "Reject", commission_path(request.commission), class: 'show-btn-commission'  %>
               </div>
             </div>
           <% end %>
