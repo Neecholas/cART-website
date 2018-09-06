@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
       @users = User.where(sql_query, query: "%#{params[:query]}%")
     else
-      @users = User.all
+      @users = User.select { |user| user.arts }
     end
   end
 
