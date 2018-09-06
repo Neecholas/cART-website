@@ -41,8 +41,8 @@
     <div class="request-card-container">
       <% if current_user.id == @commission.user.id %>
         <% if @commission.status.nil? %>
-          <h3>Requests</h3>
           <% @commission.requests.each do |request| %>
+          <h3>Requests</h3>
             <div class="request-card">
               <div class="request-content">
                 <div class="request-content-header">
