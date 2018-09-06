@@ -8,148 +8,145 @@
 </div>
 
 
-<div class="container">
+
+<div class="request-card-container">
   <div class="row">
-    <div class="fuccu">
-        <div class="col-xs-12 col-md-4">
-          <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-        </div>
-        <div class="col-xs-12 col-md-4">
-          <div class="prof-desc">
-          <h3><%= @user.first_name %> <%= @user.last_name %></h3>
-          <h5>@<%= @user.username %></h5>
-          <p><%= @user.bio %></p>
-        </div>
-        </div>
-          <div class="col-xs-12 col-md-4">
-            <div class="prof-btns">
-            <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
-            <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
-          </div>
-        </div>
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="prof-desc">
+        <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+        <h5>@<%= @user.username %></h5>
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="prof-btns">
+        <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
+        <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
+      </div>
     </div>
   </div>
-</div>
 
-    <div class="prof-portfolio">
 
-    </div>
-
-  <div class="request-card-container">
-    <% if current_user.id == @user.id %>
-      <% unless current_user.orders.empty? %>
-        <h3>Your Orders</h3>
-        <% current_user.orders.each do |order| %>
-          <% if order.photo %>
-            <div class="order-card">
-              <div class="order-image">
-                <%= cl_image_tag(order.photo)%>
-              </div>
-              <div class="order-content">
-                <h6><%= order.request.commission.title %></h6>
-                <p>Your order is complete! Check your awesome request below</p>
-              </div>
+  <% if current_user.id == @user.id %>
+    <% unless current_user.orders.empty? %>
+      <h3>Your Orders</h3>
+      <% current_user.orders.each do |order| %>
+        <% if order.photo %>
+          <div class="order-card">
+            <div class="order-image">
+              <%= cl_image_tag(order.photo)%>
             </div>
-          <% else %>
-            <div class="request-card">
-              <div class="request-content ">
-                <div class="request-content-header">
-                  <h6><%= order.request.commission.title %></h6>
-                </div>
-                  <p>The artist is working on this order!</p>
-              </div>
-              <div class="request-btn">
-                <%= link_to "Show Order", order_path(order), class: "turquiose-btn" %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-      <% unless current_user.commissions.empty? %>
-        <h3>My Commissions</h3>
-        <% current_user.commissions.each do |commission| %>
-          <div class="request-card">
-            <div class="request-content">
-              <div class="request-content-header">
-                <h6><%= commission.title %></h6>
-              </div>
-                <% unless commission.requests.empty? %>
-                  <p>You have <%= commission.requests.length %> requests</p>
-                <% else %>
-                  <p>No requests yet</p>
-                <% end %>
-            </div>
-            <div class="request-btn">
-              <div>
-                <%= link_to "Show Commission", commission_path(commission), class: "turquiose-btn" %>
-              </div>
+            <div class="order-content">
+              <h6><%= order.request.commission.title %></h6>
+              <p>Your order is complete! Check your awesome request below</p>
             </div>
           </div>
-        <% end %>
-      <% end %>
-
-      <% unless current_user.requests.empty? %>
-
-        <h3>My Requests</h3>
-        <% current_user.requests.each do |request| %>
+        <% else %>
           <div class="request-card">
-            <div class="request-content">
+            <div class="request-content ">
               <div class="request-content-header">
-                <h6><%= request.commission.title %></h6>
+                <h6><%= order.request.commission.title %></h6>
               </div>
-              <p><%= request.description %></p>
-              <% if request.status %>
-                <% if request.order.photo_url %>
-                  <p>This commission has been completed!</p>
-                <% else %>
-                  <%= simple_form_for request.order, html: { class: "request-form"} do |f| %>
-                    <h6><%= f.input :message, placeholder: "Write your messgae here!", input_html: { class: "request-message" }, label_html: { class: "request-label"} %></h6>
-                    <h6><%= f.input :photo, input_html: { class: "request-message" }, label_html: { class: "request-label"}%></h6>
-                    <p><%= f.input :photo_cache, as: :hidden %></p>
+                <p>The artist is working on this order!</p>
             </div>
-                <div class="request-btn">
-                  <div>
-                    <%= link_to "Show Request", commission_path(request.commission), class: "turquiose-btn" %>
-                  </div>
-                  <div class="update-btn">
-                      <%= f.submit "Update Order", :class => "request-form-submit" %></div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <% if !request.status %>
-                  <div class="request-btn">
-                    <div>
-                      <%= link_to "Show Request", commission_path(request.commission), class: "turquiose-btn" %>
-                    </div>
-                  </div>
-                <% end %>
+            <div class="request-btn">
+              <%= link_to "Show Order", order_path(order), class: "turquiose-btn" %>
+            </div>
           </div>
         <% end %>
       <% end %>
     <% end %>
+    <% unless current_user.commissions.empty? %>
+      <h3>My Commissions</h3>
+      <% current_user.commissions.each do |commission| %>
+        <div class="request-card">
+          <div class="request-content">
+            <div class="request-content-header">
+              <h6><%= commission.title %></h6>
+            </div>
+            <% unless commission.requests.empty? %>
+              <p>You have <%= commission.requests.length %> requests</p>
+            <% else %>
+              <p>No requests yet</p>
+            <% end %>
+          </div>
+          <div class="request-btn">
+            <div>
+              <%= link_to "Show Commission", commission_path(commission), class: "turquiose-btn" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% unless current_user.requests.empty? %>
+
+      <h3>My Requests</h3>
+      <% current_user.requests.each do |request| %>
+        <div class="request-card">
+          <div class="request-content">
+            <div class="request-content-header">
+              <h6><%= request.commission.title %></h6>
+            </div>
+            <p><%= request.description %></p>
+            <% if request.status %>
+              <% if request.order.photo_url %>
+                <p>This commission has been completed!</p>
+              <% else %>
+                <%= simple_form_for request.order, html: { class: "request-form"} do |f| %>
+                  <h6><%= f.input :message, placeholder: "Write your messgae here!", input_html: { class: "request-message" }, label_html: { class: "request-label"} %></h6>
+                  <h6><%= f.input :photo, input_html: { class: "request-message" }, label_html: { class: "request-label"}%></h6>
+                  <p><%= f.input :photo_cache, as: :hidden %></p>
+                  <div class="request-btn">
+                    <div>
+                      <%= link_to "Show Request", commission_path(request.commission), class: "turquiose-btn" %>
+                    </div>
+                    <div class="update-btn">
+                      %= f.submit "Update Order", :class => "request-form-submit" %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <% unless request.status %>
+            <div class="request-btn">
+              <div>
+                <%= link_to "Show Request", commission_path(request.commission), class: "turquiose-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="row prof-portfolio">
+    <h3>Gallery</h3>
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://res.cloudinary.com/dghextejt/image/upload/v1536140516/kbthwperzeczpfdtoh2d.jpg">
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://res.cloudinary.com/dghextejt/image/upload/v1536140578/ojc0glalg88czrgcjjil.jpg">
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://res.cloudinary.com/dghextejt/image/upload/v1536140659/uermp4tbqyjqgbb4sjoh.jpg">
+    </div>
+  </div>
+  <div class="row prof-portfolio">
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://res.cloudinary.com/dghextejt/image/upload/v1536160815/oa1scadi197xw4e7qyf8.jpg">
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://res.cloudinary.com/dghextejt/image/upload/v1536160839/xpui9pf2xoj57dsm2p4b.jpg">
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <img style="max-width:100%;" src="https://res.cloudinary.com/dghextejt/image/upload/v1536140770/kql6nar04tz0ykynbdwi.jpg">
+    </div>
   </div>
 </div>
 
-<div class="row prof-portfolio">
-  <h3>Gallery</h3>
-  <div class="col-xs-12 col-md-4">
-    <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <img style="max-width:100%;" src="https://images.unsplash.com/photo-1536002506692-2cac1612e1b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c402b6609f18281514798966dc604c6c&auto=format&fit=crop&w=1974&q=80">
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <img style="max-width:100%;" src="https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcb9b99a534c70a94cf558bd07d3bffd&auto=format&fit=crop&w=1050&q=80">
-  </div>
-</div>
+
 

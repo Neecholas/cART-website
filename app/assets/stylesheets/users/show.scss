@@ -41,10 +41,11 @@
 // ______________________________________________________
 
 .prof-portfolio {
-  margin-top: 20px;
+  margin-top: -20px;
   margin-bottom:20px;
   margin-left: 20px;
   margin-right: 20px;
+
 }
 
 .col-md-4 {
@@ -72,4 +73,8 @@
 }
 .luser h2 {
   color: white;
+}
+
+.request-card-container {
+  padding: 36px 50px;
 }
