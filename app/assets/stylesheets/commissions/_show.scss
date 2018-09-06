@@ -2,7 +2,7 @@
   height: 50vh;
   background-size: cover;
   background-position: center;
-  background-image: url("com-background.jpg");
+  background-image: url("https://res.cloudinary.com/dghextejt/image/upload/v1536231378/commission.png");
 }
 
 
@@ -68,6 +68,21 @@
   color: white;
   font-family: 'Lato';
 }
+
+// #reference-header {
+//   margin-left: 454px;
+// }
+
+// .reference-card {
+//   display: flex;
+//   background-color: $light-gray;
+//   margin-left: 454px;
+// }
+
+.reference-image img {
+  height: 400px;
+}
+
 
 .request-card-container {
   padding: 0 100px;
@@ -144,12 +159,25 @@ padding-top: 24px;
 }
 
 .order-card {
-  margin: 28px 34px;
+  margin: 28px 140px;
   display: flex;
-  justify-content: space-between;
   background-color: $light-gray;
 }
 
 .order-content {
   padding-left: 16px;
+  p {
+    padding-top: 13px;
+    padding-right: 13px;
+  }
+  h5 {
+    text-decoration: underline solid $turquiose;
+  }
+}
+
+#order-username {
+  padding: 0;
+  font-weight: bold;
+  font-family: 'Lato';
+  text-decoration: none;
 }

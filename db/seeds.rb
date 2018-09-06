@@ -11,13 +11,18 @@ Request.destroy_all
 Commission.destroy_all
 Art.destroy_all
 User.destroy_all
-images = ["https://res.cloudinary.com/dghextejt/image/upload/v1535634399/hfmdz5h5ryrlaixtptxn.jpg", "https://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/sheep.jpg",
-"http://res.cloudinary.com/dghextejt/image/upload/v1535450755/samples/people/smiling-man.jpg",
-"https://res.cloudinary.com/dghextejt/image/upload/v1535450758/samples/animals/three-dogs.jpg",
-"https://res.cloudinary.com/dghextejt/image/upload/v1535450751/samples/animals/cat.jpg",
-"https://res.cloudinary.com/dghextejt/image/upload/v1535450757/samples/bike.jpg"]
+images = ["https://res.cloudinary.com/dghextejt/image/upload/v1536227846/b39f2e4326eb86a7f6d65dfa23063807.png",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227803/079346113651-0.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227875/c5990866339971.5b12d85ae2304.png",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227962/too-many-watermelons-yetiland.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227734/surreal-optical-illusion-paintings-by-rob-gonsalves-9.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227712/london-paintings14_3173588a.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227439/classic-paintings-into-geek-fandoms-lothlenan-2-59253e3d24de8__880.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227688/image_315.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536227993/donald-trump-artworks-12.jpg",
+"https://res.cloudinary.com/dghextejt/image/upload/v1536228006/8ca016ed0397ced72442be3ed39363ad.jpg"]
 
-titles = ["A small King Charles Spaniel", "My children", "An English landscape", "Something for my Grandma", "A Homer Simpson sketch", "Cat Pictures", "Portrait", "Collage of my house", "A painting of my Dad", "Giraffe Pictures" ]
+titles = ["Draw my spouse", "Draw my pet", "An English landscape", "Something for my Grandma", "A Homer Simpson sketch", "Cat Pictures", "Portrait", "Collage of my house", "A painting of my Dad", "Giraffe Pictures" ]
 
 descriptions = ["The painting dominates the walls, every colour is bold and painted with such precise lines that it almost looks like a mosaic. They are curved yet sharply defined; they seem to stable but tumble at the same time. Like me I think, so stable but always in free-fall inside. I am soft but can lampoon people who spark my anxieties without meaning to. I am bright but I often feel painted onto the background, like there really isn't anything of substance inside. I hope there is. I hope there is more meaning in my bones than tumbling colours, chaotic and shallow.",
 "The composition of the painting is curious. My eyes are moving from place to place unable to decide what the focus of the piece is. I can only imagine that the art reflects the chaos inside the artist. The colours are vivid, almost to the point of garish. The stroke lines are bold and the images from out of this world. It is both stunning and head-ache inducing, it's like a novel condensed onto a single page. I'd like to see it as a series of paintings with each idea given time and space to be expressed, to communicate the meaning that was inside its creator.",
@@ -45,11 +50,6 @@ a = User.create(
     bio: bios.sample,
     password: "123123"
     )
-
-Art.create!(
-  title: "Nick",
-  photo: open(images.sample),
-  user: a)
 
 c = Commission.create!(
   title: "Monet Painting",
@@ -126,17 +126,23 @@ req = Request.create!(
 
 
 
-# puts 'Creating 10 Users...'
-# 15.times do
-#   User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     username: Faker::Internet.username,
-#     email: Faker::Internet.email,
-#     bio: bios.sample,
-#     password: "123123"
-#   )
-# end
+puts 'Creating 10 Users...'
+count = 0
+10.times do
+  a = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    username: Faker::Internet.username,
+    email: Faker::Internet.email,
+    bio: bios.sample,
+    password: "123123"
+  )
+  Art.create!(
+    title: Faker::BojackHorseman.character,
+    photo: open(images[count]),
+    user: a)
+  count += 1
+end
 
 # puts 'Creating 10 Arts...'
 # 20.times do
@@ -147,16 +153,18 @@ req = Request.create!(
 #     )
 # end
 
-# puts 'Creating 10 Commissions...'
-# 10.times do
-#   Commission.create!(
-#     title: titles.sample,
-#     description: descriptions.sample,
-#     amount: rand(1..15) * 10,
-#     photo: open(images.sample),
-#     user: User.all.sample
-#   )
-# end
+artists = User.all.select { |user| user.arts }
+
+puts 'Creating 10 Commissions...'
+10.times do
+  Commission.create!(
+    title: titles.sample,
+    description: descriptions.sample,
+    amount: rand(1..15) * 10,
+    photo: open(images.sample),
+    user: artists.sample
+  )
+end
 
 # puts "Creating 10 Requests..."
   # 10.times do
