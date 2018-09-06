@@ -23,8 +23,8 @@
         </div>
           <div class="col-xs-12 col-md-4">
             <div class="prof-btns">
-            <%= link_to "Put out a commission", new_commission_path, class: "turquiose-btn" %>
-            <%= link_to "Add art", new_art_path, class: "turquiose-btn" %>
+            <%= link_to "Create Commission", new_commission_path, class: "turquiose-btn" %>
+            <%= link_to "Add Art", new_art_path, class: "turquiose-btn" %>
           </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
       <% unless current_user.orders.empty? %>
         <h3>Your Orders</h3>
         <% current_user.orders.each do |order| %>
-          <% if order.photo %>
+          <% if order.photo.url %>
             <div class="order-card">
               <div class="order-image">
                 <%= cl_image_tag(order.photo)%>
