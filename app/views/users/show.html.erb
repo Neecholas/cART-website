@@ -46,8 +46,9 @@
                 <%= cl_image_tag(order.photo)%>
               </div>
               <div class="order-content">
-                <h6><%= order.request.commission.title %></h6>
-                <p>Your order is complete! Check your awesome request below</p>
+                <h5><%= order.request.commission.title %></h5>
+                <p id="order-username">@<%= order.request.user.username %></p>
+                <p><%= order.message %></p>
               </div>
             </div>
           <% else %>

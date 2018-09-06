@@ -24,6 +24,19 @@
         <h4><%= @commission.description %></h4>
       </div>
     </div>
+    <% if @commission.photo %>
+      <h3>Reference</h3>
+      <div class="order-card">
+        <div class="reference-image">
+          <%= cl_image_tag(@commission.photo) %>
+        </div>
+          <div class="order-content">
+            <h5 id="order-username">@<%= @commission.user.username %></h5>
+            <p> Here's a Reference of what I want the picture to look like! </p>
+        </div>
+      </div>
+    <% end %>
+
     <!-- <h2>Email:<%#= @commission.user.email %></h2> -->
     <div class="request-card-container">
       <% if current_user.id == @commission.user.id %>
@@ -46,12 +59,15 @@
         <% elsif @commission.status %>
           <% if @commission.requests.first.order.photo_url.nil?  %>
           <% else %>
+          <h3>Your Art.</h3>
             <div class="order-card">
-              <div class="request-image">
+              <div class="order-image">
                 <%= cl_image_tag(@commission.requests.first.order.photo_url) %>
               </div>
-              <!-- This is where I would like the name of the artist and a message that they've sent  -->
-                <h5><%=  %></h5>
+                <div class="order-content">
+                  <h5 id="order-username">@<%= @commission.requests.first.user.username %></h5>
+                  <p><%= @commission.requests.first.order.message %></p>
+              </div>
             </div>
           <% end %>
         <% end %>
