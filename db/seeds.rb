@@ -110,12 +110,12 @@ art6.photo = open('https://res.cloudinary.com/dghextejt/image/upload/v1536160839
 art6.save
 
 
-req = Request.create!(
-  description: "I will do this for you!",
-  commission: c,
-  user: b,
-  price_cents: 15
-)
+# req = Request.create!(
+#   description: "I will do this for you!",
+#   commission: c,
+#   user: b,
+#   price_cents: 15
+# )
 
 # ord = Order.create!(
 #   state: "pending",
