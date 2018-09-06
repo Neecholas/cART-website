@@ -100,18 +100,18 @@
                   <h6><%= f.input :message, placeholder: "Write your messgae here!", input_html: { class: "request-message" }, label_html: { class: "request-label"} %></h6>
                   <h6><%= f.input :photo, input_html: { class: "request-message" }, label_html: { class: "request-label"}%></h6>
                   <p><%= f.input :photo_cache, as: :hidden %></p>
-                  <div class="request-btn">
-                    <div>
-                      <%= link_to "Show Request", commission_path(request.commission), class: "turquiose-btn" %>
-                    </div>
-                    <div class="update-btn">
-                      <%= f.submit "Update Order", :class => "request-form-submit" %>
-                    </div>
-                  </div>
+          </div>
+            <div class="request-btn">
+              <div>
+                <%= link_to "Show Request", commission_path(request.commission), class: "turquiose-btn" %>
+              </div>
+              <div class="update-btn">
+                <%= f.submit "Update Order", :class => "request-form-submit" %>
+              </div>
                 <% end %>
               <% end %>
             <% end %>
-          </div>
+            </div>
           <% unless request.status %>
             <div class="request-btn">
               <div>
