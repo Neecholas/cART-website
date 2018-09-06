@@ -52,17 +52,17 @@ a = User.create(
     )
 
 c = Commission.create!(
-  title: "Monet Painting",
-  description: "The tone of the painting is muted, the style reminiscent of Monet. Each stroke had a smudging quality that rendered the image watery, like a reflection in a rippled puddle. The scene is a street, London I'll bet, the umbrella bearing pedestrians battle against rain and the red double-deckers and black cabs rumble by. It reminds me of Oxford Street, looking out of a rain-splattered window at the rivers of people that moved in each direction. Like in this painting they moved so randomly, pushing against one another, flowing, like water. Perhaps to this artist that's what we are, small drops in a sky full of rain, each one looking out and saying to ourselves “Wow, that sure is a lot of rain.”",
-  amount: 1000,
-  photo: open(images.sample),
+  title: "Post-modern landscape",
+  description: "I am a keen collector of Post-modern art and want to commission my own landscape full of despair and agony. I’m inspired by the work of Jackson Pollock and the abstract expressionists – if your work is similar to his then perhaps you would be the artist for me. A complex texture, vivid colours, and a-temporality are but some of the themes that I am looking for. A poem in colours, a half-formed idea in images, a dream.",
+  amount: "1000",
+  photo: open("https://res.cloudinary.com/dghextejt/image/upload/v1536252823/kill.jpg"),
   user: a)
 
 b = User.create(
     first_name: "Christian",
     last_name: "Bell",
     username: "ChristianBell",
-    bio: bios.sample,
+    bio: "I can't abide the art that's printed by the thousands. I'm not an carbon copy person and I don't want carbon copy art. I want something beautiful on the wall, but I want to know the artist that made it. I want to know what moved them to make something so beautiful – and to me it always is. Even pain and sorrow is beautiful in art, it shows us who we are, who we have been, and helps us to see where we're heading. So when I see those reproductions I see a corporation hijacking something that should be personal and making it ugly – no matter what scene it represents. Art takes time, art takes love, I'll take an original over a copy any day.",
     email: "christianBell@bell.com",
     password: "123123"
     )
@@ -126,6 +126,8 @@ art6.save
 
 
 
+
+
 puts 'Creating 10 Users...'
 count = 0
 10.times do
@@ -156,15 +158,57 @@ end
 artists = User.all.select { |user| user.arts }
 
 puts 'Creating 10 Commissions...'
-10.times do
   Commission.create!(
-    title: titles.sample,
-    description: descriptions.sample,
-    amount: rand(1..15) * 10,
+    title: "Labrador Portrait",
+    description: "My Labrador is called Jamie and she is one of the cutest dogs that I’ve ever seen, so we decided to commission an artist to paint her whilst she’s still in her prime! I’m pretty open to requests from different people although we are probably after a painting rather than a sculpture or collage. You would have to come and see her in person as I don’t think you’d be able to really see her just from photos – we live in Cardiff so that might be a limiting factor in your decision. Let me know what you think in your request – we’d be interested to see what pose you think she would look best in as well.",
+    amount: "400-600",
     photo: open(images.sample),
     user: artists.sample
   )
-end
+  Commission.create!(
+    title: "St Ives Landscape",
+    description: "I spent my childhood growing up in St Ives and would like a landscape painting that captures my memories. It was a very special place to me that has now been ruined by tourism so you would be working mainly off the old photos of my father who was a fisherman in the region. I mainly had in mind a landscape but a seascape may also be interesting as the cliffs around there are inspiring. I would say I’m generally looking for a water colour artist – the main challenge of the project is going to be to bring to life some of these black and white photos I have.",
+    amount: "100-120",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+  Commission.create!(
+    title: "Garage Graffiti ",
+    description: "I’ve just moved into a new house in Shoreditch and I was slightly worried that I wasn’t fitting in with the neighbourhood so was wondering if someone could do some nice Banksy-esque graffiti on my garage. My house is a new build and doesn’t quite fit in with the exposed brick aesthetic that you find here so you’d really be helping me out. Any aspiring graffiti artists please send me requests – you do have to be good though, this is not just an invitation to vandalise my house. You know who you are.",
+    amount: "70-100",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+  Commission.create!(
+    title: "David Beckham Sketch ",
+    description: "I love everything David Beckham, not only did he have a distinguished career as a footballer but he also is an ambassador for England on the international stage and is a credit to the UK. I have a collection of his different shirts but thought about getting a sketch done, just because I bloody love him. Only a sketch mind, I think an oil painting would be a bit much, so please request only if you’re good at drawing.",
+    amount: "20-50",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+  Commission.create!(
+    title: "Tribal Tatoo Design",
+    description: "I'd like a tribal tattoo designed for my left bicep. I work as a bouncer but i'm only 5'2 and weight 143lbs and i feel having a tattoo would make me look more intimidating, strong and somewhat exotic ( ladies :wink: ).  Happy with any design as long as it will make me feel secure. SERIOUS ARTISTS ONLY.",
+    amount: "20-50",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+  Commission.create!(
+    title: "Ruby",
+    description: "I recently graduated from a coding bootcamp and developed a surprising affinity for coffee. As a result, i'd like to get a drawing of a coffee bean encrusted with rubies as (nod to my favourite programming language, PHP) which i could then mail to my numerous friends and watch them slowly descend into madness.",
+    amount: "60",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+  Commission.create!(
+    title: "Logo LuxLeaz",
+    description: "Okay okay okay! I am making my new website Lux leaz and nothing says luxury like a cheap spinning logo! Therefore I'm looking for a talented artist/designer to make one that I can use for my website. It needs to be able to spin slow but also fast, so it impresses the clients who will be leasing out yachts and stuff like that, you get me?",
+    amount: "60",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+
+
 
 # puts "Creating 10 Requests..."
   # 10.times do
