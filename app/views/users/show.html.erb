@@ -97,9 +97,9 @@
                   <p>This commission has been completed!</p>
                 <% else %>
                   <%= simple_form_for request.order, html: { class: "request-form"} do |f| %>
-                    <h6><%= f.input :photo %></h6>
+                    <h6><%= f.input :message, placeholder: "Write your messgae here!", input_html: { class: "request-message" }, label_html: { class: "request-label"} %></h6>
+                    <h6><%= f.input :photo, input_html: { class: "request-message" }, label_html: { class: "request-label"}%></h6>
                     <p><%= f.input :photo_cache, as: :hidden %></p>
-                    <p><%= f.input :message %></p>
             </div>
                 <div class="request-btn">
                   <div>

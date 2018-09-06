@@ -96,10 +96,18 @@
   padding: 24px;
 }
 
-.request-form {
-  input:nth-child(2) {
+.request-label {
+  text-decoration: underline solid $turquiose;
+  border: none;
+}
 
-  }
+.request-message {
+  font-family: 'Merriweather', 'serif';
+  font-weight: 100;
+  color: #5C5757;
+  font-size: 14px !important;
+  padding: 0px;
+  background-color: white;
 }
 
 .update-btn {
