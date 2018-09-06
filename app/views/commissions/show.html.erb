@@ -45,7 +45,6 @@
           <% end %>
         <% elsif @commission.status %>
           <% if @commission.requests.first.order.photo_url.nil?  %>
-            <p>The artist is working on this commission!</p>
           <% else %>
             <div class="order-card">
               <div class="request-image">
