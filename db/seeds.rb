@@ -35,7 +35,6 @@ descriptions = ["The painting dominates the walls, every colour is bold and pain
 
 bios = ["When my hand moves over the canvass it's almost like my mind is directing it without me, odd perhaps, but that's the way it is. My hand moves instinctively to the right spot, building a new picture, often one I have never seen before. In these fantastical worlds I see reflections of my own mind, the way I think, but there is something else there too. I don't know what, perhaps I just imagine it, but when I paint I feel closest to our creator and it gives me a peace and mental calmness I cannot find another way",
 "Art is part of our human soul. It is dreams emerging from a part of ourselves, a way to communicate with the deeper self of both the artist and others. The same piece invokes different emotions depending on the person, their mood, their time of life. Art is pictures; art is sculpture; art is the creative word; art is music. We are all artists in our various ways, all born to be creative.",
- "I can't abide the art that's printed by the thousands. I'm not an carbon copy person and I don't want carbon copy art. I want something beautiful on the wall, but I want to know the artist that made it. I want to know what moved them to make something so beautiful – and to me it always is. Even pain and sorrow is beautiful in art, it shows us who we are, who we have been, and helps us to see where we're heading. So when I see those reproductions I see a corporation hijacking something that should be personal and making it ugly – no matter what scene it represents. Art takes time, art takes love, I'll take an original over a copy any day.",
 "Our creativity brings our dreams to life; inspiring, enchanting, bringing us closer to God. In art our spirits rise, in stories we are enthralled and elevated. With creativity we make connections between disparate people, we learn that through our many lenses we are seeing the same whole, only the path before our feet is still blurred. Life should never be art vs science, but a beautiful marriage of the two.",
 "How can one describe art? A work of art can be a painting, a drawing, a piece of music, a piece of theatre. A piece of art is anything that is a source of inspiration to others, something that can be heard in the depths of their bodies, right in the core of their person, where it resonates its deepest meaning. What that meaning is, is up to you. Art has the ability to express a thousand words in a second, and a hundred different stories can be heard in each note of a song. The arts are the result of us using the gift of imagination and rewarding it to the world for others to enjoy, as well as ourselves. Art is wholly and completely selfless, and because of this, it is utterly and shamelessly beautiful.",
 "I’ve spent the last 40 years of my photographic career investigating movement and its expressive potential. My inspiration has always been photography’s ability to stop time and reveal what the naked eye cannot see. What intrigues me is making images that confound and confuse the viewer, but that the viewer knows, or suspects, really happened."
@@ -47,6 +46,16 @@ a = User.create(
     last_name: "Johnson",
     username: "NJ the juiceman",
     email: "nick@bogdanoff.com",
+    bio: "My names Nick and I'm a cool guy, some people think I'm not cool but I am cool. I like pictures of me on unicorns",
+    password: "123123",
+    photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536310292/Nick.jpg"
+    )
+
+d = User.create(
+    first_name: "Rick",
+    last_name: "Slick",
+    username: "Ricky",
+    email: "rick.slick@gmail.com",
     bio: bios.sample,
     password: "123123"
     )
@@ -56,7 +65,7 @@ c = Commission.create!(
   description: "I am a keen collector of Post-modern art and want to commission my own landscape full of despair and agony. I’m inspired by the work of Jackson Pollock and the abstract expressionists – if your work is similar to his then perhaps you would be the artist for me. A complex texture, vivid colours, and a-temporality are but some of the themes that I am looking for. A poem in colours, a half-formed idea in images, a dream.",
   amount: "1000",
   photo: open("https://res.cloudinary.com/dghextejt/image/upload/v1536252823/kill.jpg"),
-  user: a)
+  user: d)
 
 b = User.create(
     first_name: "Christian",
@@ -64,7 +73,8 @@ b = User.create(
     username: "ChristianBell",
     bio: "I can't abide the art that's printed by the thousands. I'm not an carbon copy person and I don't want carbon copy art. I want something beautiful on the wall, but I want to know the artist that made it. I want to know what moved them to make something so beautiful – and to me it always is. Even pain and sorrow is beautiful in art, it shows us who we are, who we have been, and helps us to see where we're heading. So when I see those reproductions I see a corporation hijacking something that should be personal and making it ugly – no matter what scene it represents. Art takes time, art takes love, I'll take an original over a copy any day.",
     email: "christianBell@bell.com",
-    password: "123123"
+    password: "123123",
+    photo: "https://res.cloudinary.com/dghextejt/image/upload/v1536310386/Christian.jpg"
     )
 
 art1 = Art.new(
@@ -189,7 +199,7 @@ puts 'Creating 10 Commissions...'
   Commission.create!(
     title: "Tribal Tatoo Design",
     description: "I'd like a tribal tattoo designed for my left bicep. I work as a bouncer but i'm only 5'2 and weight 143lbs and i feel having a tattoo would make me look more intimidating, strong and somewhat exotic ( ladies :wink: ).  Happy with any design as long as it will make me feel secure. SERIOUS ARTISTS ONLY.",
-    amount: "20-50",
+    amount: "10-50",
     photo: open(images.sample),
     user: artists.sample
   )
@@ -203,7 +213,14 @@ puts 'Creating 10 Commissions...'
   Commission.create!(
     title: "Logo LuxLeaz",
     description: "Okay okay okay! I am making my new website Lux leaz and nothing says luxury like a cheap spinning logo! Therefore I'm looking for a talented artist/designer to make one that I can use for my website. It needs to be able to spin slow but also fast, so it impresses the clients who will be leasing out yachts and stuff like that, you get me?",
-    amount: "60",
+    amount: "1000-1500",
+    photo: open(images.sample),
+    user: artists.sample
+  )
+  Commission.create!(
+    title: "My Grandmother, Acrylic",
+    description: "I would like to get an acrylic painting of my grandmother, Doris, to commemorate her 90th birthday. Looking for an experienced portraiture artist to take on this one-of-a-kind, personal project and bring her likeness to life on a 90 x 110 cm canvas. The piece will most likely be hung above our fireplace (see attached photos for reference). If possible, i’d like this done by November 3rd, a week before her birthday.",
+    amount: "70-130",
     photo: open(images.sample),
     user: artists.sample
   )
