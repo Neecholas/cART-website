@@ -41,7 +41,8 @@
             </div>
             <div class="order-content">
               <h6><%= order.request.commission.title %></h6>
-              <p>Your order is complete! Check your awesome request below</p>
+              <p><%= order.message %></p>
+              <p>@<%= order.request.commission.user.username %></p>
             </div>
           </div>
         <% else %>
@@ -97,7 +98,7 @@
                 <p>This commission has been completed!</p>
               <% else %>
                 <%= simple_form_for request.order, html: { class: "request-form"} do |f| %>
-                  <h6><%= f.input :message, placeholder: "Write your messgae here!", input_html: { class: "request-message" }, label_html: { class: "request-label"} %></h6>
+                  <h6><%= f.input :message, placeholder: "Write your message here!", input_html: { class: "request-message" }, label_html: { class: "request-label"} %></h6>
                   <h6><%= f.input :photo, input_html: { class: "request-message" }, label_html: { class: "request-label"}%></h6>
                   <p><%= f.input :photo_cache, as: :hidden %></p>
           </div>
