@@ -218,7 +218,7 @@ puts 'Creating 10 Commissions...'
     user: artists.sample
   )
   Commission.create!(
-    title: "My Grandmother, Acrylic",
+    title: "My Grandmother",
     description: "I would like to get an acrylic painting of my grandmother, Doris, to commemorate her 90th birthday. Looking for an experienced portraiture artist to take on this one-of-a-kind, personal project and bring her likeness to life on a 90 x 110 cm canvas. The piece will most likely be hung above our fireplace (see attached photos for reference). If possible, i’d like this done by November 3rd, a week before her birthday.",
     amount: "70-130",
     photo: open(images.sample),

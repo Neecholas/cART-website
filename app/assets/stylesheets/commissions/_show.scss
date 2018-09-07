@@ -5,7 +5,9 @@
   background-image: url("https://res.cloudinary.com/dghextejt/image/upload/v1536231378/commission.png");
 }
 
-
+.image-size img {
+  max-width: 100% !important;
+}
 
 .commission_box {
   display: flex;
